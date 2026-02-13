@@ -1,19 +1,20 @@
 import type { ReactNode } from 'react';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import Face4Icon from '@mui/icons-material/Face4';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ContactsIcon from '@mui/icons-material/Contacts';
-import MailIcon from '@mui/icons-material/Mail';
-import AppsIcon from '@mui/icons-material/Apps';
-import Face4Icon from '@mui/icons-material/Face4';
+import CreateIcon from '@mui/icons-material/Create';
+import ListIcon from '@mui/icons-material/List';
 
-interface ListItems {
-  path: string;
+export interface MenuType {
   label: string;
-  icon: ReactNode;
+  path?: string;
+  icon?: ReactNode;
+  children?: Omit<MenuType, 'children'>[];
 }
 
-export const listItems: ListItems[] = [
+export const menu: MenuType[] = [
   {
     path: '/',
     label: 'Dashboard',
@@ -25,23 +26,24 @@ export const listItems: ListItems[] = [
     icon: <Face4Icon />,
   },
   {
-    path: '/users',
     label: 'Users',
     icon: <PeopleAltIcon />,
+    children: [
+      {
+        icon: <CreateIcon />,
+        path: '/users/create',
+        label: 'Create',
+      },
+      {
+        icon: <ListIcon />,
+        path: '/users',
+        label: 'List',
+      },
+    ],
   },
   {
     path: '/contacts',
     label: 'Contacts',
     icon: <ContactsIcon />,
-  },
-  {
-    path: '/mail',
-    label: 'Mail',
-    icon: <MailIcon />,
-  },
-  {
-    path: '/react-router',
-    label: 'React Router',
-    icon: <AppsIcon />,
   },
 ];

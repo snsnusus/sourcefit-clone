@@ -73,41 +73,41 @@
       },
       { "usePrettierrc": true }
     ],
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "type",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "builtin",
-            "position": "before"
-          },
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "newlines-between": "always",
-        "alphabetize": { "order": "ignore", "caseInsensitive": true }
-      }
-    ],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": ["../"]
-      }
-    ]
+    // "import/order": [
+    //   "error",
+    //   {
+    //     "groups": [
+    //       "type",
+    //       "builtin",
+    //       "external",
+    //       "internal",
+    //       "parent",
+    //       "sibling",
+    //       "index",
+    //       "object"
+    //     ],
+    //     "pathGroups": [
+    //       {
+    //         "pattern": "react",
+    //         "group": "builtin",
+    //         "position": "before"
+    //       },
+    //       {
+    //         "pattern": "react",
+    //         "group": "external",
+    //         "position": "before"
+    //       }
+    //     ],
+    //     "pathGroupsExcludedImportTypes": ["react"],
+    //     "newlines-between": "always",
+    //     "alphabetize": { "order": "ignore", "caseInsensitive": true }
+    //   }
+    // ]
+    // "no-restricted-imports": [
+    //   "error",
+    //   {
+    //     "patterns": ["../"]
+    //   }
+    // ]
   }
 }

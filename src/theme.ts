@@ -6,12 +6,36 @@ export const theme = createTheme({
       main: '#e7700d',
       contrastText: '#ffffff',
     },
+    secondary: {
+      main: '#0d5ce7',
+      contrastText: '#ffffff',
+    },
+    background: {
+      default: '#ffffff',
+      paper: '#f5f5f5',
+    },
+    text: {
+      primary: '#1e1e1e',
+      secondary: '#666666',
+    },
+    error: {
+      main: '#d32f2f',
+    },
+    warning: {
+      main: '#ff9800',
+    },
+    info: {
+      main: '#2196f3',
+    },
+    success: {
+      main: '#4caf50',
+    },
   },
   custom: {
     drawer: {
       width: {
-        open: 306,
-        close: 108,
+        open: 260,
+        close: 110,
       },
     },
   },
@@ -21,6 +45,9 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Open Sans', 'sans-serif'].join(','),
+    fontFamily: ['Google Sans', 'sans-serif'].join(','),
+    fontWeightRegular: 400,
+    fontWeightMedium: 600,
+    fontWeightBold: 900,
   },
 });

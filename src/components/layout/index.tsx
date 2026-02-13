@@ -3,11 +3,12 @@ import { Suspense } from 'react';
 
 import { styled } from '@mui/material';
 import Box, { type BoxProps } from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
-import Navbar from './Navbar';
+import Breadcrumb from './breadcrumb';
+import Navbar from './navbar';
 import Sidebar from './sidebar';
-import Footer from './Footer';
-import ContentWrapper from './ContentWrapper';
+import Footer from './footer';
 
 const Container = styled('div')({
   display: 'flex',
@@ -17,15 +18,11 @@ const Container = styled('div')({
 const Content = styled(Box)<BoxProps>(({ theme }) => ({
   flexGrow: 1,
   minHeight: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
-  marginBottom: theme.spacing(3),
+  marginBottom: theme.mixins.toolbar.minHeight,
 }));
 
 const TopOffset = styled('div')(({ theme }) => ({
   minHeight: `calc(${theme.mixins.toolbar.minHeight}px + ${theme.spacing(2)})`,
-}));
-
-const BottomOffset = styled('div')(({ theme }) => ({
-  minHeight: theme.spacing(4),
 }));
 
 const Layout = (props: PropsWithChildren): ReactElement => {
@@ -37,8 +34,10 @@ const Layout = (props: PropsWithChildren): ReactElement => {
         <Sidebar />
         <Content component="main">
           <TopOffset />
-          <ContentWrapper>{children}</ContentWrapper>
-          <BottomOffset />
+          <Stack py={2} px={4} gap={1}>
+            <Breadcrumb />
+            <Stack>{children}</Stack>
+          </Stack>
         </Content>
         <Footer />
       </Container>

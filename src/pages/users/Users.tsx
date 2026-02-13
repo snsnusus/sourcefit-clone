@@ -1,6 +1,6 @@
-import type { ReactElement } from 'react';
-
 import type { Post } from '~/apis/types';
+
+import type { ReactElement } from 'react';
 
 import Table, { createColumn } from '~/components/table';
 import { usePostsQuery } from '~/queries';

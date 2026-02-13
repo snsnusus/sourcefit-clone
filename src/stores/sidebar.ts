@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { createWithEqualityFn } from 'zustand/traditional';
 
 interface SidebarStore {
   open: boolean;
@@ -6,10 +6,16 @@ interface SidebarStore {
 
 interface UseSidebarStore extends SidebarStore {
   toggle: () => void;
+  onClose: () => void;
 }
 
-export const useSidebarStore = create<UseSidebarStore>((set) => ({
-  open: true,
+export const useSidebarStore = createWithEqualityFn<UseSidebarStore>((set) => ({
+  open: false,
+  onClose: () =>
+    set((state) => ({
+      ...state,
+      open: false,
+    })),
   toggle: () =>
     set((state) => ({
       ...state,

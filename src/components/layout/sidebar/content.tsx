@@ -5,8 +5,7 @@ import Stack from '@mui/material/Stack';
 
 const Content = styled(Stack)({
   whiteSpace: 'unset',
-  overflowX: 'hidden',
-  overflowY: 'auto',
+  overflow: 'hidden',
   flexGrow: 1,
 });
 

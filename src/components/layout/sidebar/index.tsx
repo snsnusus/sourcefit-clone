@@ -1,27 +1,34 @@
 import type { ReactElement } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
-import { styled, Typography } from '@mui/material';
+import { styled } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
 import List from '@mui/material/List';
 import Stack, { type StackProps } from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Divider from '@mui/material/Divider';
-import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 
-import { useSidebarStore } from '~/stores';
+import { useSidebarStore } from '~/stores/sidebar';
 
-import Drawer from './Drawer';
-import DrawerContent from './DrawerContent';
-import ListItem from './ListItem';
-import { listItems } from './config';
+import Drawer from './drawer';
+import DrawerContent from './content';
+import ListItem from './menu-item';
+import { menu } from './menu';
 
 const Logo = styled('img')(({ theme }) => ({
   transition: theme.transitions.create('all', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
+  [theme.breakpoints.down('md')]: {
+    // height: '30px',
+  },
+  [theme.breakpoints.up('md')]: {
+    // height: '60px',
+  },
 }));
 
 const ProfileWrapper = styled(Stack)<StackProps>(({ theme }) => ({
@@ -68,13 +75,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const Sidebar = (): ReactElement => {
-  const { open } = useSidebarStore((state) => ({
-    open: state.open,
-    toggle: state.toggle,
-  }));
+  const open = useSidebarStore((state) => state.open, Object.is);
 
   return (
-    <Drawer open={open}>
+    <Drawer>
       <Toolbar
         disableGutters
         sx={{
@@ -88,8 +92,8 @@ const Sidebar = (): ReactElement => {
         <Logo
           alt="Logo"
           src={open ? '/assets/logo-long.png' : '/assets/logo-short.png'}
-          height={62}
-          width={open ? 256 : 62}
+          height={52}
+          width={open ? 252 : 56}
         />
       </Toolbar>
       <DrawerContent>
@@ -128,14 +132,15 @@ const Sidebar = (): ReactElement => {
             )}
           </Stack>
         </ProfileWrapper>
-        <List>
-          {listItems.map((item) => (
-            <ListItem key={uuidv4()} open={open} {...item} />
-          ))}
-        </List>
+        <Stack overflow="auto">
+          <List>
+            {menu.map((item) => (
+              <ListItem key={uuidv4()} open={open} {...item} />
+            ))}
+          </List>
+        </Stack>
       </DrawerContent>
       <Divider />
-      <Toolbar />
     </Drawer>
   );
 };

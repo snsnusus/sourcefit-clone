@@ -1,10 +1,10 @@
-import type { ReactElement } from 'react';
-
 import type { Theme, CSSObject } from '@mui/material';
 import type { AppBarProps } from '@mui/material/AppBar';
 
+import type { ReactElement } from 'react';
+
 import { useNavigation } from 'react-router-dom';
-import { alpha, styled } from '@mui/material';
+import { alpha, styled, useMediaQuery, useTheme } from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
@@ -21,11 +21,10 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { ProgressBar } from '~/components';
-import { useSidebarStore } from '~/stores';
+import { useSidebarStore } from '~/stores/sidebar';
 
 const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
   padding: theme.spacing(1, 2),
-  // zIndex: theme.zIndex.drawer + 1,
 }));
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -45,15 +44,19 @@ const closedMixin = (theme: Theme): CSSObject => ({
 });
 
 const CustomToolbar = styled(Toolbar, {
-  shouldForwardProp: (props) => props != 'open',
-})<ToolbarProps & { open: boolean }>(({ theme, open }) => ({
-  ...(open && {
-    ...openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-  }),
-}));
+  shouldForwardProp: (props) => props != 'open' && props !== 'isMobile',
+})<ToolbarProps & { open: boolean; isMobile: boolean }>(
+  ({ theme, open, isMobile }) => ({
+    ...(!isMobile &&
+      open && {
+        ...openedMixin(theme),
+      }),
+    ...(!isMobile &&
+      !open && {
+        ...closedMixin(theme),
+      }),
+  })
+);
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -92,16 +95,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = (): ReactElement => {
   const { state: navigationState } = useNavigation();
-  const { open, toggle } = useSidebarStore((state) => ({
-    open: state.open,
-    toggle: state.toggle,
-  }));
+  const open = useSidebarStore((state) => state.open, Object.is);
+  const toggle = useSidebarStore((state) => state.toggle, Object.is);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <>
       {navigationState === 'loading' ? <ProgressBar /> : null}
       <AppBar position="fixed">
-        <CustomToolbar open={open} disableGutters>
+        <CustomToolbar open={open} isMobile={isMobile} disableGutters>
           <Stack direction="row" gap={2}>
             <IconButton sx={{ color: '#ffffff' }} onClick={toggle}>
               {open ? <MenuOpenIcon /> : <MenuIcon />}
