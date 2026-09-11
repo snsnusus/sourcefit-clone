@@ -17,25 +17,77 @@ export const theme = createTheme({
     text: {
       primary: '#1e1e1e',
       secondary: '#666666',
+      muted: '#979797de',
     },
     error: {
       main: '#d32f2f',
+      contrastText: '#ffffff',
     },
     warning: {
       main: '#ff9800',
+      contrastText: '#ffffff',
     },
     info: {
       main: '#2196f3',
+      contrastText: '#ffffff',
     },
     success: {
       main: '#4caf50',
+      contrastText: '#ffffff',
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.775rem',
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        option: {
+          fontSize: '0.875rem',
+          paddingTop: '6px !important',
+          paddingBottom: '6px !important',
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
     },
   },
   custom: {
     drawer: {
-      width: {
-        open: 260,
-        close: 110,
+      sidebar: {
+        width: {
+          open: 300,
+          close: 120,
+        },
+      },
+      chatDirectory: {
+        width: {
+          open: 260,
+          close: 75,
+        },
       },
     },
   },

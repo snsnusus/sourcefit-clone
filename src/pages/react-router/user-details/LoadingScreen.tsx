@@ -6,16 +6,36 @@ import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 
 const UserDetailsLoadingScreen = (): ReactElement => (
-  <Stack gap={2}>
-    <Stack direction="row" gap={2} display="flex" alignItems="center">
+  <Stack
+    sx={{
+      gap: 2,
+    }}
+  >
+    <Stack
+      direction="row"
+      sx={{
+        gap: 2,
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
       <Box>
         <Skeleton variant="circular" width={80} height={80} />
       </Box>
-      <Stack gap={1} flexGrow={1}>
+      <Stack
+        sx={{
+          gap: 1,
+          flexGrow: 1,
+        }}
+      >
         <Typography variant="h4">
           <Skeleton variant="rounded" width={300} />
         </Typography>
-        <Typography fontSize="1rem">
+        <Typography
+          sx={{
+            fontSize: '1rem',
+          }}
+        >
           <Skeleton variant="rounded" width={100} />
         </Typography>
       </Stack>

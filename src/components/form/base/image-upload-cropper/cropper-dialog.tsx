@@ -1,14 +1,14 @@
-import type { Point, Area } from 'react-easy-crop/types';
+import { type ReactElement } from 'react';
 
-import type { ReactElement } from 'react';
-
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import Slider from '@mui/material/Slider';
-import Stack from '@mui/material/Stack';
-import Cropper from 'react-easy-crop';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Slider,
+  Stack,
+} from '@mui/material';
+import Cropper, { type Point, type Area } from 'react-easy-crop';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 
@@ -35,10 +35,20 @@ const CropperDialog = ({
   onCrop,
   onCropcomplete,
 }: CropperDialogProps): ReactElement => (
-  <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-    <DialogContent sx={{ paddingBottom: 2, overflow: 'hidden' }}>
-      <Stack gap={2}>
-        <Stack sx={{ position: 'relative', width: '100%', height: '300px' }}>
+  <Dialog
+    open={open}
+    onClose={onClose}
+    maxWidth="md"
+    fullWidth
+    disableRestoreFocus
+  >
+    <DialogContent sx={{ paddingBottom: 2, overflow: 'hidden' }} dividers>
+      <Stack
+        sx={{
+          gap: 2,
+        }}
+      >
+        <Stack sx={{ position: 'relative', width: '100%', height: '500px' }}>
           <Cropper
             image={imageSource ?? ''}
             crop={crop}
@@ -51,7 +61,7 @@ const CropperDialog = ({
           />
         </Stack>
         <Stack spacing={2.5} direction="row" sx={{ alignItems: 'center' }}>
-          <ZoomOutIcon />
+          <ZoomOutIcon fontSize="medium" />
           <Slider
             value={zoom}
             min={1}
@@ -59,12 +69,12 @@ const CropperDialog = ({
             step={0.1}
             onChange={(_, value) => setZoom(value as number)}
           />
-          <ZoomInIcon />
+          <ZoomInIcon fontSize="medium" />
         </Stack>
       </Stack>
     </DialogContent>
-    <DialogActions>
-      <Button variant="outlined" onClick={onClose}>
+    <DialogActions sx={{ padding: 2 }}>
+      <Button variant="text" onClick={onClose}>
         Cancel
       </Button>
       <Button variant="contained" onClick={onCrop}>

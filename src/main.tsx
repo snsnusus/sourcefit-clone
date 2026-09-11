@@ -6,29 +6,36 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ModalProvider } from 'mui-modal-provider';
 import { SnackbarProvider, type SnackbarOrigin } from 'notistack';
 
 import { queryClient } from './queries/config';
-import { theme } from './theme';
-import { routes } from './routes';
 
-const router = createBrowserRouter(routes);
+import { WebSocketProvider } from './contexts/websocket.context';
+import { MockAuthProvider } from './contexts/auth.context';
+import AppRouter from './routes';
+
+import { theme } from './theme';
 
 const anchorOrigin: SnackbarOrigin = {
   vertical: 'bottom',
   horizontal: 'left',
 };
 
-createRoot(document.getElementById('root') as HTMLElement).render(
+const container = document.getElementById('root') as HTMLElement;
+
+createRoot(container).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <SnackbarProvider anchorOrigin={anchorOrigin}>
+        <SnackbarProvider anchorOrigin={anchorOrigin} maxSnack={3}>
           <ModalProvider>
-            <RouterProvider router={router} />
+            <WebSocketProvider>
+              <MockAuthProvider>
+                <AppRouter />
+              </MockAuthProvider>
+            </WebSocketProvider>
           </ModalProvider>
         </SnackbarProvider>
       </ThemeProvider>

@@ -1,11 +1,13 @@
-import type { ReactDatePickerProps } from 'react-datepicker';
+import type {
+  ReactDatePickerProps,
+  ReactDatePickerCustomHeaderProps,
+} from 'react-datepicker';
 
-import type { ReactElement } from 'react';
+import { type ReactElement, forwardRef } from 'react';
 
-import DatePicker from 'react-datepicker';
-import TextField from '@mui/material/TextField';
+import { TextField } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import ReactDatePicker from 'react-datepicker';
 import DatePickerHeader from './header';
 
 export interface DatePickerProps
@@ -18,6 +20,41 @@ export interface DatePickerProps
   dateFormat?: 'MM/dd/yyyy';
   onChange: (date: Date | [Date | null, Date | null] | null) => void;
 }
+
+interface MuiInputProps {
+  label?: string;
+  name?: string;
+}
+
+const DatePicker = (ReactDatePicker as any).default ?? ReactDatePicker;
+
+const MuiDatePickerInput = forwardRef<HTMLDivElement, MuiInputProps>(
+  (props, ref) => {
+    const { label, name, ...restProps } = props;
+
+    return (
+      <TextField
+        {...restProps} // 🚀 Spreads react-datepicker's custom click/focus events seamlessly
+        inputRef={ref} // 🚀 Binds the focus positioning tracking reference natively
+        id={name}
+        label={label}
+        variant="outlined"
+        fullWidth
+        size="small"
+        slotProps={{
+          input: {
+            endAdornment: <CalendarMonthIcon />,
+          },
+          inputLabel: {
+            shrink: true,
+          },
+        }}
+      />
+    );
+  }
+);
+
+MuiDatePickerInput.displayName = 'MuiDatePickerInput';
 
 const CustomDatePicker = (props: DatePickerProps): ReactElement => {
   const {
@@ -60,27 +97,13 @@ const CustomDatePicker = (props: DatePickerProps): ReactElement => {
       showPopperArrow={showPopperArrow}
       dateFormat={dateFormat}
       {...(isDateRange && { selectsRange: true })}
-      selected={selectedDate} // ✅ Ensured valid Date
-      startDate={selectedStartDate} // ✅ Ensured valid Date
-      endDate={selectedEndDate} // ✅ Ensured valid Date
-      renderCustomHeader={(customHeaderProps) => (
-        <DatePickerHeader {...customHeaderProps} />
-      )}
-      customInput={
-        <TextField
-          id={name}
-          label={label}
-          variant="outlined"
-          fullWidth
-          InputProps={{
-            endAdornment: <CalendarMonthIcon />,
-          }}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          size="small"
-        />
-      }
+      selected={selectedDate}
+      startDate={selectedStartDate}
+      endDate={selectedEndDate}
+      renderCustomHeader={(
+        customHeaderProps: ReactDatePickerCustomHeaderProps
+      ) => <DatePickerHeader {...customHeaderProps} />}
+      customInput={<MuiDatePickerInput label={label} name={name} />}
       onChange={onChange}
       {...rest}
     />

@@ -1,0 +1,1152 @@
+{
+  "users": [
+    {
+      "id": "ABC123",
+      "firstname": "Pea Daphne",
+      "middlename": "Valencerina",
+      "lastname": "Vargas",
+      "suffix": "",
+      "nickname": "Pey",
+      "gender": "FEMALE",
+      "birthdate": "1998-02-20",
+      "birthplace": "Bulacan",
+      "maritalStatus": "MARRIED",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Pea%Daphne",
+      "employeeId": "M-20-2022",
+      "departmentId": "tQ_V1mQhJiQ",
+      "positionId": "",
+      "officeLocation": "Manila",
+      "workSchedule": "Morning Shift (8AM - 5PM)",
+      "username": "peydaphv",
+      "password": "Password123"
+    },
+    {
+      "id": "123ABC",
+      "firstname": "Jazmine Ciel",
+      "middlename": "Vargas",
+      "lastname": "Nares",
+      "suffix": "",
+      "nickname": "Yel",
+      "gender": "FEMALE",
+      "birthdate": "2024-01-24",
+      "birthplace": "Pasig",
+      "maritalStatus": "SINGLE",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Jazmine%Ciel",
+      "employeeId": "M-24-3001",
+      "departmentId": "tQ_V1mQhJiQ",
+      "positionId": "",
+      "officeLocation": "Manila",
+      "workSchedule": "Morning Shift (8AM - 5PM)",
+      "username": "jazmineciel",
+      "password": "Password123"
+    },
+    {
+      "id": "DEF456",
+      "firstname": "John Rafael",
+      "middlename": "Santos",
+      "lastname": "Cruz",
+      "suffix": "",
+      "nickname": "Raph",
+      "gender": "MALE",
+      "birthdate": "1994-08-12",
+      "birthplace": "Pampanga",
+      "maritalStatus": "SINGLE",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=John%20Rafael",
+      "employeeId": "E-12-2021",
+      "departmentId": "tQ_V1mQhJiQ",
+      "positionId": "",
+      "officeLocation": "Manila",
+      "workSchedule": "Morning Shift (8AM - 5PM)",
+      "username": "raphcruz",
+      "password": "SecurePassword321"
+    },
+    {
+      "id": "GHI789",
+      "firstname": "Maria Clarisse",
+      "middlename": "Dela Cruz",
+      "lastname": "Aquino",
+      "suffix": "",
+      "nickname": "Claire",
+      "gender": "FEMALE",
+      "birthdate": "1991-11-03",
+      "birthplace": "Quezon City",
+      "maritalStatus": "MARRIED",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Maria%20Clarisse",
+      "employeeId": "M-03-2019",
+      "departmentId": "",
+      "positionId": "",
+      "officeLocation": "Cebu",
+      "workSchedule": "Morning Shift (8AM - 5PM)",
+      "username": "claireaquino",
+      "password": "Password987"
+    },
+    {
+      "id": "JKL012",
+      "firstname": "Mark Anthony",
+      "middlename": "Reyes",
+      "lastname": "Gomez",
+      "suffix": "Jr.",
+      "nickname": "Marky",
+      "gender": "MALE",
+      "birthdate": "1996-05-27",
+      "birthplace": "Rizal",
+      "maritalStatus": "SINGLE",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Mark%20Anthony",
+      "employeeId": "E-27-2023",
+      "departmentId": "",
+      "positionId": "",
+      "officeLocation": "Manila",
+      "workSchedule": "Morning Shift (8AM - 5PM)",
+      "username": "markygomez",
+      "password": "Password753"
+    },
+    {
+      "id": "MNO345",
+      "firstname": "Samantha Louise",
+      "middlename": "Bautista",
+      "lastname": "Mercado",
+      "suffix": "",
+      "nickname": "Sam",
+      "gender": "FEMALE",
+      "birthdate": "1995-01-15",
+      "birthplace": "Laguna",
+      "maritalStatus": "SINGLE",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Samantha%20Louise",
+      "employeeId": "E-15-2020",
+      "departmentId": "",
+      "positionId": "",
+      "officeLocation": "Manila",
+      "workSchedule": "Flexible Shift",
+      "username": "sammerca",
+      "password": "SafePassword147"
+    },
+    {
+      "id": "PQR678",
+      "firstname": "Angelica",
+      "middlename": "Bautista",
+      "lastname": "Reyes",
+      "suffix": "",
+      "nickname": "Angie",
+      "gender": "FEMALE",
+      "birthdate": "1997-09-08",
+      "birthplace": "Cavite",
+      "maritalStatus": "SINGLE",
+      "nationality": "FILIPINO",
+      "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Angelica%20Bautista",
+      "employeeId": "E-08-2024",
+      "departmentId": "tQ_V1mQhJiQ",
+      "positionId": "",
+      "officeLocation": "Manila",
+      "workSchedule": "Morning Shift (8AM - 5PM)",
+      "username": "angiereyes",
+      "password": "Password456"
+    }
+  ],
+  "addresses": [
+    {
+      "id": "",
+      "userId": "",
+      "addressLine1": "",
+      "addressLine2": "",
+      "regionId": "",
+      "cityId": "",
+      "barangayId": "",
+      "zipcode": "",
+      "formatted": "",
+      "isPrimary": false,
+      "tag": ""
+    }
+  ],
+  "phoneNumbers": [
+    {
+      "id": "",
+      "userId": "",
+      "countryCode": "",
+      "dialCode": "",
+      "raw": "",
+      "international": "",
+      "local": "",
+      "formatted": "",
+      "isVerified": "",
+      "verifiedAt": "",
+      "isPrimary": ""
+    }
+  ],
+  "emails": [
+    {
+      "id": "",
+      "userId": "",
+      "emailAddress": "",
+      "type": "",
+      "tag": "",
+      "isVerified": "",
+      "verifiedAt": "",
+      "isPrimary": ""
+    }
+  ],
+  "departments": [
+    {
+      "name": "Information Technology",
+      "slug": "ITD",
+      "description": "Organizational unit responsible for managing the company's technology infrastructure, systems, and data.",
+      "costCenterCode": "CC-1005",
+      "coverImageUrl": "https://res.cloudinary.com/s8lzx0yk/image/upload/v1785179313/departments/cover_images/ujwbyun5tevhv4uyl7ky.jpg",
+      "primaryContactId": "ABC123",
+      "secondaryContactId": "123ABC",
+      "officeId": "LOC-001",
+      "status": "active",
+      "id": "tQ_V1mQhJiQ"
+    }
+  ],
+  "positions": [
+    {
+      "position": "IT Director",
+      "slug": "it-director",
+      "description": "Leads overall technology strategy and aligns IT goals with the business.",
+      "sortOrder": 1,
+      "isActive": true,
+      "isApprover": true,
+      "departmentId": "tQ_V1mQhJiQ",
+      "id": "GvMk_is8JTE"
+    },
+    {
+      "position": "IT Manager",
+      "slug": "it-manager",
+      "description": "Oversees daily operations, budgets, and project coordination for the team.",
+      "sortOrder": 2,
+      "isActive": true,
+      "isApprover": true,
+      "departmentId": "tQ_V1mQhJiQ",
+      "id": "Y49-81zNV0k"
+    },
+    {
+      "position": "Senior Specialist",
+      "slug": "senior-specialist",
+      "description": "Monitors networks for cyber threats and enforces data protection rules.",
+      "sortOrder": 3,
+      "isActive": true,
+      "isApprover": false,
+      "departmentId": "tQ_V1mQhJiQ",
+      "id": "XUpE4LvMlE8"
+    },
+    {
+      "position": "Associate",
+      "slug": "associate",
+      "description": "Serves as the first point of contact for users needing tech help.",
+      "sortOrder": 4,
+      "isActive": true,
+      "isApprover": false,
+      "departmentId": "tQ_V1mQhJiQ",
+      "id": "By50VBccbvU"
+    }
+  ],
+  "offices": [
+    {
+      "id": "LOC-001",
+      "city": "Manila",
+      "countryCode": "PH",
+      "label": "Manila, PH"
+    },
+    {
+      "id": "LOC-002",
+      "city": "Cebu",
+      "countryCode": "PH",
+      "label": "Cebu, PH"
+    },
+    {
+      "id": "LOC-003",
+      "city": "New York",
+      "countryCode": "US",
+      "label": "New York, US"
+    },
+    {
+      "id": "LOC-004",
+      "city": "Sydney",
+      "countryCode": "AU",
+      "label": "Sydney, AU"
+    }
+  ],
+  "scopes": [
+    {
+      "departmentId": "tQ_V1mQhJiQ",
+      "title": "Infrastructure Maintenance",
+      "description": "Managing computers, servers, and networks to keep systems running.",
+      "id": "LesUo4efuc8"
+    },
+    {
+      "departmentId": "tQ_V1mQhJiQ",
+      "title": "Technical Support",
+      "description": "Helping employees troubleshoot hardware and software problems.",
+      "id": "Xv79OuS3cAM"
+    }
+  ],
+  "regions": [
+    {
+      "id": "130000000",
+      "name": "Metro Manila (NCR)"
+    }
+  ],
+  "cities": [
+    {
+      "id": "133900000",
+      "regionId": "130000000",
+      "name": "Manila"
+    },
+    {
+      "id": "137401000",
+      "regionId": "130000000",
+      "name": "Mandaluyong"
+    },
+    {
+      "id": "137402000",
+      "regionId": "130000000",
+      "name": "Marikina"
+    },
+    {
+      "id": "137403000",
+      "regionId": "130000000",
+      "name": "Pasig"
+    },
+    {
+      "id": "137404000",
+      "regionId": "130000000",
+      "name": "Quezon name"
+    },
+    {
+      "id": "137405000",
+      "regionId": "130000000",
+      "name": "San Juan"
+    },
+    {
+      "id": "137501000",
+      "regionId": "130000000",
+      "name": "Caloocan"
+    },
+    {
+      "id": "137502000",
+      "regionId": "130000000",
+      "name": "Malabon"
+    },
+    {
+      "id": "137503000",
+      "regionId": "130000000",
+      "name": "Navotas"
+    },
+    {
+      "id": "137504000",
+      "regionId": "130000000",
+      "name": "Valenzuela"
+    },
+    {
+      "id": "137601000",
+      "regionId": "130000000",
+      "name": "Las Piñas"
+    },
+    {
+      "id": "137602000",
+      "regionId": "130000000",
+      "name": "Makati"
+    },
+    {
+      "id": "137603000",
+      "regionId": "130000000",
+      "name": "Muntinlupa"
+    },
+    {
+      "id": "137604000",
+      "regionId": "130000000",
+      "name": "Parañaque"
+    },
+    {
+      "id": "137605000",
+      "regionId": "130000000",
+      "name": "Pasay"
+    },
+    {
+      "id": "137607000",
+      "regionId": "130000000",
+      "name": "Taguig"
+    },
+    {
+      "id": "137608000",
+      "regionId": "130000000",
+      "name": "Pateros"
+    }
+  ],
+  "barangays": [
+    {
+      "id": "137403001",
+      "cityId": "137403000",
+      "name": "Bagong Ilog",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403002",
+      "cityId": "137403000",
+      "name": "Bagong Katipunan",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403003",
+      "cityId": "137403000",
+      "name": "Bambang",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403004",
+      "cityId": "137403000",
+      "name": "Buting",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403005",
+      "cityId": "137403000",
+      "name": "Caniogan",
+      "zipCode": "1606"
+    },
+    {
+      "id": "137403006",
+      "cityId": "137403000",
+      "name": "Dela Paz",
+      "zipCode": "1610"
+    },
+    {
+      "id": "137403007",
+      "cityId": "137403000",
+      "name": "Kalawaan",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403008",
+      "cityId": "137403000",
+      "name": "Kapasigan",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403009",
+      "cityId": "137403000",
+      "name": "Kapitolyo",
+      "zipCode": "1603"
+    },
+    {
+      "id": "137403010",
+      "cityId": "137403000",
+      "name": "Malinao",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403011",
+      "cityId": "137403000",
+      "name": "Manggahan",
+      "zipCode": "1611"
+    },
+    {
+      "id": "137403012",
+      "cityId": "137403000",
+      "name": "Maybunga",
+      "zipCode": "1607"
+    },
+    {
+      "id": "137403013",
+      "cityId": "137403000",
+      "name": "Oranbo",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403014",
+      "cityId": "137403000",
+      "name": "Palatiw",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403015",
+      "cityId": "137403000",
+      "name": "Pinagbuhatan",
+      "zipCode": "1602"
+    },
+    {
+      "id": "137403016",
+      "cityId": "137403000",
+      "name": "Pineda",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403017",
+      "cityId": "137403000",
+      "name": "Rosario",
+      "zipCode": "1609"
+    },
+    {
+      "id": "137403018",
+      "cityId": "137403000",
+      "name": "San Antonio",
+      "zipCode": "1605"
+    },
+    {
+      "id": "137403019",
+      "cityId": "137403000",
+      "name": "San Joaquin",
+      "zipCode": "1601"
+    },
+    {
+      "id": "137403020",
+      "cityId": "137403000",
+      "name": "San Jose",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403021",
+      "cityId": "137403000",
+      "name": "San Nicolas",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403022",
+      "cityId": "137403000",
+      "name": "Santa Cruz",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403023",
+      "cityId": "137403000",
+      "name": "Santa Lucia",
+      "zipCode": "1608"
+    },
+    {
+      "id": "137403024",
+      "cityId": "137403000",
+      "name": "Santa Rosa",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403025",
+      "cityId": "137403000",
+      "name": "Santolan",
+      "zipCode": "1612"
+    },
+    {
+      "id": "137403026",
+      "cityId": "137403000",
+      "name": "Sumilang",
+      "zipCode": "1600"
+    },
+    {
+      "id": "137403027",
+      "cityId": "137403000",
+      "name": "Ugong",
+      "zipCode": "1604"
+    },
+    {
+      "id": "137602001",
+      "cityId": "137602000",
+      "name": "Bangkal",
+      "zipCode": "1233"
+    },
+    {
+      "id": "137602002",
+      "cityId": "137602000",
+      "name": "Bel-Air",
+      "zipCode": "1209"
+    },
+    {
+      "id": "137602003",
+      "cityId": "137602000",
+      "name": "Carmona",
+      "zipCode": "1207"
+    },
+    {
+      "id": "137602004",
+      "cityId": "137602000",
+      "name": "Cembo",
+      "zipCode": "1214"
+    },
+    {
+      "id": "137602005",
+      "cityId": "137602000",
+      "name": "Comembo",
+      "zipCode": "1217"
+    },
+    {
+      "id": "137602006",
+      "cityId": "137602000",
+      "name": "Dasmariñas",
+      "zipCode": "1222"
+    },
+    {
+      "id": "137602007",
+      "cityId": "137602000",
+      "name": "East Rembo",
+      "zipCode": "1216"
+    },
+    {
+      "id": "137602008",
+      "cityId": "137602000",
+      "name": "Guadalupe Nuevo",
+      "zipCode": "1212"
+    },
+    {
+      "id": "137602009",
+      "cityId": "137602000",
+      "name": "Guadalupe Viejo",
+      "zipCode": "1211"
+    },
+    {
+      "id": "137602010",
+      "cityId": "137602000",
+      "name": "Kasilawan",
+      "zipCode": "1206"
+    },
+    {
+      "id": "137602011",
+      "cityId": "137602000",
+      "name": "La Paz",
+      "zipCode": "1204"
+    },
+    {
+      "id": "137602012",
+      "cityId": "137602000",
+      "name": "Magallanes",
+      "zipCode": "1232"
+    },
+    {
+      "id": "137602013",
+      "cityId": "137602000",
+      "name": "Olympia",
+      "zipCode": "1207"
+    },
+    {
+      "id": "137602014",
+      "cityId": "137602000",
+      "name": "Palanan",
+      "zipCode": "1235"
+    },
+    {
+      "id": "137602015",
+      "cityId": "137602000",
+      "name": "Pembo",
+      "zipCode": "1218"
+    },
+    {
+      "id": "137602016",
+      "cityId": "137602000",
+      "name": "Pio Del Pilar",
+      "zipCode": "1230"
+    },
+    {
+      "id": "137602017",
+      "cityId": "137602000",
+      "name": "Poblacion",
+      "zipCode": "1210"
+    },
+    {
+      "id": "137602018",
+      "cityId": "137602000",
+      "name": "Post Proper Northside",
+      "zipCode": "1201"
+    },
+    {
+      "id": "137602019",
+      "cityId": "137602000",
+      "name": "Post Proper Southside",
+      "zipCode": "1202"
+    },
+    {
+      "id": "137602020",
+      "cityId": "137602000",
+      "name": "Rizal",
+      "zipCode": "1219"
+    },
+    {
+      "id": "137602021",
+      "cityId": "137602000",
+      "name": "San Antonio",
+      "zipCode": "1203"
+    },
+    {
+      "id": "137602022",
+      "cityId": "137602000",
+      "name": "San Lorenzo",
+      "zipCode": "1223"
+    },
+    {
+      "id": "137602023",
+      "cityId": "137602000",
+      "name": "Singkamas",
+      "zipCode": "1208"
+    },
+    {
+      "id": "137602024",
+      "cityId": "137602000",
+      "name": "South Cembo",
+      "zipCode": "1215"
+    },
+    {
+      "id": "137602025",
+      "cityId": "137602000",
+      "name": "Tejeros",
+      "zipCode": "1205"
+    },
+    {
+      "id": "137602026",
+      "cityId": "137602000",
+      "name": "Urdaneta",
+      "zipCode": "1225"
+    },
+    {
+      "id": "137602027",
+      "cityId": "137602000",
+      "name": "Valenzuela",
+      "zipCode": "1208"
+    },
+    {
+      "id": "137602028",
+      "cityId": "137602000",
+      "name": "West Rembo",
+      "zipCode": "1215"
+    },
+    {
+      "id": "137607001",
+      "cityId": "137607000",
+      "name": "Bagumbayan",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607002",
+      "cityId": "137607000",
+      "name": "Bambang",
+      "zipCode": "1637"
+    },
+    {
+      "id": "137607003",
+      "cityId": "137607000",
+      "name": "Calzada",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607004",
+      "cityId": "137607000",
+      "name": "Central Bicutan",
+      "zipCode": "1631"
+    },
+    {
+      "id": "137607005",
+      "cityId": "137607000",
+      "name": "Central Signal Village",
+      "zipCode": "1633"
+    },
+    {
+      "id": "137607006",
+      "cityId": "137607000",
+      "name": "Fort Bonifacio",
+      "zipCode": "1634"
+    },
+    {
+      "id": "137607007",
+      "cityId": "137607000",
+      "name": "Haminas",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607008",
+      "cityId": "137607000",
+      "name": "Ibayo-Tipas",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607009",
+      "cityId": "137607000",
+      "name": "Katuparan",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607010",
+      "cityId": "137607000",
+      "name": "Ligid-Tipas",
+      "zipCode": "1638"
+    },
+    {
+      "id": "137607011",
+      "cityId": "137607000",
+      "name": "Lower Bicutan",
+      "zipCode": "1632"
+    },
+    {
+      "id": "137607012",
+      "cityId": "137607000",
+      "name": "Maharlika Village",
+      "zipCode": "1636"
+    },
+    {
+      "id": "137607013",
+      "cityId": "137607000",
+      "name": "Napindan",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607014",
+      "cityId": "137607000",
+      "name": "New Lower Bicutan",
+      "zipCode": "1632"
+    },
+    {
+      "id": "137607015",
+      "cityId": "137607000",
+      "name": "North Daang Hari",
+      "zipCode": "1632"
+    },
+    {
+      "id": "137607016",
+      "cityId": "137607000",
+      "name": "North Signal Village",
+      "zipCode": "1632"
+    },
+    {
+      "id": "137607017",
+      "cityId": "137607000",
+      "name": "Palingon",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607018",
+      "cityId": "137607000",
+      "name": "Pinagsama",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607019",
+      "cityId": "137607000",
+      "name": "San Ramon",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607020",
+      "cityId": "137607000",
+      "name": "South Daang Hari",
+      "zipCode": "1632"
+    },
+    {
+      "id": "137607021",
+      "cityId": "137607000",
+      "name": "South Signal Village",
+      "zipCode": "1633"
+    },
+    {
+      "id": "137607022",
+      "cityId": "137607000",
+      "name": "Tanyag",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607023",
+      "cityId": "137607000",
+      "name": "Tuktukan",
+      "zipCode": "1637"
+    },
+    {
+      "id": "137607024",
+      "cityId": "137607000",
+      "name": "Upper Bicutan",
+      "zipCode": "1633"
+    },
+    {
+      "id": "137607025",
+      "cityId": "137607000",
+      "name": "Ususan",
+      "zipCode": "1639"
+    },
+    {
+      "id": "137607026",
+      "cityId": "137607000",
+      "name": "Wawa",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137607027",
+      "cityId": "137607000",
+      "name": "Western Bicutan",
+      "zipCode": "1630"
+    },
+    {
+      "id": "137401001",
+      "cityId": "137401000",
+      "name": "Addition Hills",
+      "zipCode": "1552"
+    },
+    {
+      "id": "137401002",
+      "cityId": "137401000",
+      "name": "Bagong Silang",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401003",
+      "cityId": "137401000",
+      "name": "Barangka Ilaya",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401004",
+      "cityId": "137401000",
+      "name": "Barangka Itaas",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401005",
+      "cityId": "137401000",
+      "name": "Buayang Bato",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401006",
+      "cityId": "137401000",
+      "name": "Highway Hills",
+      "zipCode": "1552"
+    },
+    {
+      "id": "137401007",
+      "cityId": "137401000",
+      "name": "Malamig",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401008",
+      "cityId": "137401000",
+      "name": "Namayan",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401009",
+      "cityId": "137401000",
+      "name": "Plainview",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401010",
+      "cityId": "137401000",
+      "name": "Pleasant Hills",
+      "zipCode": "1552"
+    },
+    {
+      "id": "137401011",
+      "cityId": "137401000",
+      "name": "Vergara",
+      "zipCode": "1550"
+    },
+    {
+      "id": "137401012",
+      "cityId": "137401000",
+      "name": "Wack-Wack Greenhills",
+      "zipCode": "1555"
+    },
+    {
+      "id": "137405001",
+      "cityId": "137405000",
+      "name": "Addition Hills",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405002",
+      "cityId": "137405000",
+      "name": "Balong-Bato",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405003",
+      "cityId": "137405000",
+      "name": "Corazon de Jesus",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405004",
+      "cityId": "137405000",
+      "name": "Ermitaño",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405005",
+      "cityId": "137405000",
+      "name": "Greenhills",
+      "zipCode": "1502"
+    },
+    {
+      "id": "137405006",
+      "cityId": "137405000",
+      "name": "Isabelita",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405007",
+      "cityId": "137405000",
+      "name": "Kabayanan",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405008",
+      "cityId": "137405000",
+      "name": "Little Baguio",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405009",
+      "cityId": "137405000",
+      "name": "Maytunas",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405010",
+      "cityId": "137405000",
+      "name": "Onse",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405011",
+      "cityId": "137405000",
+      "name": "Pasadena",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405012",
+      "cityId": "137405000",
+      "name": "Pedro Cruz",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405013",
+      "cityId": "137405000",
+      "name": "Progreso",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405014",
+      "cityId": "137405000",
+      "name": "Rivera",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405015",
+      "cityId": "137405000",
+      "name": "Salapan",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405016",
+      "cityId": "137405000",
+      "name": "San Perfecto",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405017",
+      "cityId": "137405000",
+      "name": "Tibagan",
+      "zipCode": "1500"
+    },
+    {
+      "id": "137405018",
+      "cityId": "137405000",
+      "name": "West Crame",
+      "zipCode": "1504"
+    },
+    {
+      "id": "133901001",
+      "cityId": "133900000",
+      "name": "Binondo (Barangay 287)",
+      "zipCode": "1006"
+    },
+    {
+      "id": "133901002",
+      "cityId": "133900000",
+      "name": "Ermita (Barangay 659)",
+      "zipCode": "1000"
+    },
+    {
+      "id": "133901003",
+      "cityId": "133900000",
+      "name": "Intramuros (Barangay 654)",
+      "zipCode": "1002"
+    },
+    {
+      "id": "133901004",
+      "cityId": "133900000",
+      "name": "Malate (Barangay 696)",
+      "zipCode": "1004"
+    },
+    {
+      "id": "133901005",
+      "cityId": "133900000",
+      "name": "Paco (Barangay 662)",
+      "zipCode": "1007"
+    },
+    {
+      "id": "133901006",
+      "cityId": "133900000",
+      "name": "Pandacan (Barangay 833)",
+      "zipCode": "1011"
+    },
+    {
+      "id": "133901007",
+      "cityId": "133900000",
+      "name": "Quiapo (Barangay 306)",
+      "zipCode": "1001"
+    },
+    {
+      "id": "133901008",
+      "cityId": "133900000",
+      "name": "Sampaloc (Barangay 405)",
+      "zipCode": "1008"
+    },
+    {
+      "id": "133901009",
+      "cityId": "133900000",
+      "name": "San Miguel (Barangay 641)",
+      "zipCode": "1005"
+    },
+    {
+      "id": "133901010",
+      "cityId": "133900000",
+      "name": "San Nicolas (Barangay 268)",
+      "zipCode": "1010"
+    },
+    {
+      "id": "133901011",
+      "cityId": "133900000",
+      "name": "Santa Ana (Barangay 745)",
+      "zipCode": "1009"
+    },
+    {
+      "id": "133901012",
+      "cityId": "133900000",
+      "name": "Santa Cruz (Barangay 297)",
+      "zipCode": "1014"
+    },
+    {
+      "id": "133901013",
+      "cityId": "133900000",
+      "name": "Tondo I (Barangay 1)",
+      "zipCode": "1012"
+    },
+    {
+      "id": "133901014",
+      "cityId": "133900000",
+      "name": "Tondo II (Barangay 151)",
+      "zipCode": "1013"
+    }
+  ],
+  "messages": [
+    {
+      "text": "test",
+      "userId": "1",
+      "senderName": "Pea Daphne Vargas",
+      "recipientId": "3",
+      "roomId": "1-3",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=Alex",
+      "timestamp": "02:04 PM",
+      "id": "IWWfhl1ssbM"
+    }
+  ]
+}

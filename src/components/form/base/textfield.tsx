@@ -1,23 +1,24 @@
 import type { ReactElement } from 'react';
+import TextField, {
+  type TextFieldProps as MuiTextFieldProps,
+} from '@mui/material/TextField';
 
-import TextField, { type BaseTextFieldProps } from '@mui/material/TextField';
-
-export interface TextFieldProps extends BaseTextFieldProps {
+export type BaseTextFieldProps = MuiTextFieldProps & {
   name: string;
-}
+};
 
-const BaseTextField = (props: TextFieldProps): ReactElement => (
+export const BaseTextField = (props: BaseTextFieldProps): ReactElement => (
   <TextField
-    {...props}
-    variant={props.variant ?? 'outlined'}
+    variant="outlined"
     size="small"
+    fullWidth={props.fullWidth ?? true}
+    {...props}
     slotProps={{
+      ...props.slotProps,
       inputLabel: {
         shrink: true,
+        ...props.slotProps?.inputLabel,
       },
     }}
-    fullWidth
   />
 );
-
-export default BaseTextField;

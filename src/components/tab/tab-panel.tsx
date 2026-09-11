@@ -15,8 +15,8 @@ const TabPanel = (props: TabPanelProps): ReactElement => {
     <Stack
       sx={{
         display: value !== index ? 'none' : 'flex',
+        flexGrow: 1,
       }}
-      flexGrow={1}
       {...other}
     >
       {children}

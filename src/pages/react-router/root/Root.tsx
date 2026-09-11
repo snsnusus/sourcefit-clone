@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { Fragment, useEffect, useState } from 'react';
 
-import type { User } from '~/apis/types';
+import type { User } from '~/models/placeholder.models';
 
 import { v4 as uuidv4 } from 'uuid';
 import { useLoaderData, Outlet, NavLink, Form } from 'react-router-dom';
@@ -42,21 +42,31 @@ const ReactRouter = (): ReactElement => {
     <Stack>
       <AppBar position="static" color="transparent" sx={{ px: 2, py: 1 }}>
         <Toolbar>
-          <Typography variant="h4" fontWeight="bold">
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: 'bold',
+            }}
+          >
             React Router: Demo
           </Typography>
         </Toolbar>
       </AppBar>
       <Stack direction="row">
         <Stack
-          gap={2}
-          p={2}
           sx={{
+            gap: 2,
+            padding: 2,
             borderRight: '1px solid rgba(0, 0, 0, 0.12)',
           }}
         >
           <Form id="search-form">
-            <Stack direction="row" gap={1}>
+            <Stack
+              direction="row"
+              sx={{
+                gap: 1,
+              }}
+            >
               <TextField
                 label="Search"
                 size="small"
@@ -100,7 +110,7 @@ const ReactRouter = (): ReactElement => {
             </List>
           </Scrollbars>
         </Stack>
-        <Box flexGrow={1} p={2}>
+        <Box sx={{ flexGrow: 1, padding: 2 }}>
           <Outlet />
         </Box>
       </Stack>

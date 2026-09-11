@@ -23,13 +23,14 @@ const StyledYearsContainer = styled(Box)(({ theme }) => ({
   overflow: 'auto',
   maxHeight: theme.spacing(12.5),
   padding: theme.spacing(0, 1),
+  backgroundColor: theme.palette.background.default,
 }));
 
 const StyledYearButton = styled(IconButton)(({ theme }) => ({
-  fontWeight: 'bold',
+  fontWeight: 900,
   borderRadius: '50%',
   padding: theme.spacing(1),
-  fontSize: '.975rem',
+  fontSize: '.8735rem',
   fontFamily: 'Google Sans',
 }));
 
@@ -59,18 +60,32 @@ const DatePickerHeader = (props: HeaderProps): ReactElement => {
     <Stack>
       <Stack
         direction="row"
-        alignItems="center"
-        justifyContent="center"
-        px={2}
-        py={0}
-        gap={1}
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 1,
+          px: 2,
+          py: 0,
+        }}
       >
-        <Stack direction="row" alignItems="center" gap={1}>
-          <Typography variant="body1" fontWeight="bold" color="independence">
+        <Stack
+          direction="row"
+          sx={{
+            alignItems: 'center',
+            gap: 1,
+          }}
+        >
+          <Typography
+            variant="body1"
+            color="independence"
+            sx={{
+              fontWeight: 900,
+            }}
+          >
             {getMonth(date)}
           </Typography>
           <IconButton disableRipple onClick={toggleYearsOptions}>
-            <Typography variant="body1" fontWeight="bold">
+            <Typography variant="body1" sx={{ fontWeight: 900 }}>
               {getYear(date)}
             </Typography>
             {isYearsOptionsVisible ? <ExpandLessIcon /> : <ExpandMoreIcon />}

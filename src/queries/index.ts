@@ -1,10 +1,14 @@
 import type { UseQueryResult, UseMutationResult } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
-import type { Post, ApiErrorResponse, PostParams } from '~/apis/types';
+import type {
+  Post,
+  ApiErrorResponse,
+  PostParams,
+} from '~/models/placeholder.models';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import * as api from '~/apis';
+import * as api from '~/api';
 
 export const usePostsQuery = (
   searchQuery: string

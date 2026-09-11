@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import type { User, Photo } from '~/apis/types';
+import type { User, Photo } from '~/models/placeholder.models';
 
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
@@ -30,37 +30,56 @@ const UserDetails = (): ReactElement => {
         <LoadingScreen />
       ) : (
         <Fade in={state === 'idle'} timeout={1000}>
-          <Stack gap={2}>
-            <Stack direction="row" gap={2}>
+          <Stack
+            sx={{
+              gap: 2,
+            }}
+          >
+            <Stack
+              direction="row"
+              sx={{
+                gap: 2,
+              }}
+            >
               <Stack
                 direction="row"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                flexGrow={1}
-                gap={2}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexGrow: 1,
+                  gap: 2,
+                }}
               >
                 <Avatar
                   alt="User Avatar"
                   src={photo.url}
                   sx={{ width: 80, height: 80 }}
                 />
-                <Stack flexGrow={1}>
+                <Stack
+                  sx={{
+                    flexGrow: 1,
+                  }}
+                >
                   <Typography variant="h4">{user.name}</Typography>
                   <Typography
-                    color="#6c757d"
-                    fontSize="1rem"
-                    fontStyle="italic"
+                    sx={{
+                      color: '#6c757d',
+                      fontSize: '1rem',
+                      fontStyle: 'italic',
+                    }}
                   >
                     {user.username.toLowerCase()}
                   </Typography>
                 </Stack>
               </Stack>
               <Stack
-                display="flex"
-                alignItems="flex-start"
-                direction="row"
-                gap={0.5}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  direction: 'row',
+                  gap: 0.5,
+                }}
               >
                 <IconButton color="warning">
                   <StarIcon />

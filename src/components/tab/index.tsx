@@ -36,19 +36,64 @@ const Tab = ({ tabs, defaultActiveTab, ...rest }: TabProps): ReactElement => {
   };
 
   return (
-    <Stack gap={2}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={currentTab} onChange={handleChange} {...rest}>
-          {tabs.map(({ label }, idx) => (
+    <Stack>
+      <Tabs
+        value={currentTab}
+        onChange={handleChange}
+        variant="fullWidth"
+        sx={{
+          width: '100%',
+          minHeight: '40px',
+          backgroundColor: 'action.hover', // Optional: subtle background tracking track for the pill rail
+          borderRadius: '20px',
+          display: 'inline-flex',
+          '& .MuiTabs-indicator': {
+            height: '100%',
+            borderRadius: '24px',
+            backgroundColor: 'primary.main', // This pill will slide seamlessly between selections
+          },
+        }}
+        {...rest}
+      >
+        {tabs.map(({ label }, idx) => {
+          const tabValue = defaultActiveTab ? label : idx;
+          const isSelected = currentTab === tabValue;
+
+          return (
             <MuiTab
               key={idx}
               label={label}
               value={defaultActiveTab ? label : idx}
+              sx={{
+                textTransform: 'none',
+                fontWeight: 500,
+                borderRadius: '24px', // 2. Gives it that chip/pill shape
+                padding: '6px 16px',
+                minHeight: '40px',
+                fontSize: '1rem',
+                zIndex: 1, // Pushes text layer cleanly over the moving indicator track
+                transition: 'color 0.2s ease-in-out',
+
+                // Fallback text colors matching the active state flag
+                color: isSelected ? 'primary.contrastText' : 'text.secondary',
+
+                // Ultimate Specificity Override targeting native MUI structural classes
+                '&.MuiButtonBase-root': {
+                  color: isSelected ? 'primary.contrastText' : 'text.secondary',
+                },
+                '&.Mui-selected': {
+                  color: 'primary.contrastText !important',
+                },
+                // Optional hover feedback
+                // '&:hover:not(.Mui-selected)': {
+                //   backgroundColor: 'action.hover',
+                // },
+              }}
               {...a11yProps(idx)}
             />
-          ))}
-        </Tabs>
-      </Box>
+          );
+        })}
+      </Tabs>
       {tabs.map(({ label, content }, idx) => (
         <TabPanel
           key={idx}

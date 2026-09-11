@@ -1,17 +1,16 @@
-import type { Point, Area } from 'react-easy-crop/types';
+import type { Area, Point } from 'react-easy-crop';
 
-import type { ChangeEvent, ReactElement } from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, type ChangeEvent, type ReactElement } from 'react';
 
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import { Button, Stack } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 import CropperDialog from './cropper-dialog';
 import HiddenInput from './hidden-input';
 import ImagePreview from './image-preview';
 import { createImage, base64ToFile } from './utils';
+import FileCriteria from './file-criteria';
 
 interface UploadedFile {
   fileName: string;
@@ -21,13 +20,12 @@ interface UploadedFile {
 
 interface ImageUploadCropperProps {
   name: string;
-  label: string;
+  label?: string;
   value?: File | null;
 }
 
 const ImageUploadCropper = ({
   name,
-  label,
 }: ImageUploadCropperProps): ReactElement => {
   const [isCropperDialogOpen, setOpenCropperDialog] = useState(false);
   const [croppedImage, setCroppedImage] = useState<File | null>(null);
@@ -94,6 +92,10 @@ const ImageUploadCropper = ({
   };
 
   const handleClose = (): void => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+
     setUploadedFile({
       fileName: '',
       fileType: '',
@@ -104,32 +106,24 @@ const ImageUploadCropper = ({
 
   return (
     <>
-      <Stack gap={1}>
-        <Typography variant="body2" color="textSecondary">
-          {label ?? ''}
-        </Typography>
-        <Stack gap={1} justifyContent="center" alignItems="center">
-          <ImagePreview uploadedFile={croppedImage} />
-          <Button component="label" startIcon={<FileUploadIcon />}>
-            <Typography
-              variant="body2"
-              sx={{
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                maxWidth: '150px',
-              }}
-            >
-              {croppedImage ? croppedImage.name : 'Browse...'}
-            </Typography>
-            <HiddenInput
-              ref={fileInputRef}
-              type="file"
-              name={name}
-              onChange={handleHiddenInputChange}
-            />
-          </Button>
-        </Stack>
+      <Stack spacing={1.5}>
+        <ImagePreview uploadedFile={croppedImage} />
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
+          startIcon={croppedImage ? <EditIcon /> : <FileUploadIcon />}
+          onClick={() => fileInputRef.current?.click()}
+        >
+          {croppedImage ? 'Change...' : 'Browse...'}
+          <HiddenInput
+            ref={fileInputRef}
+            type="file"
+            name={name}
+            onChange={handleHiddenInputChange}
+          />
+        </Button>
+        <FileCriteria file={croppedImage} />
       </Stack>
 
       <CropperDialog

@@ -1,4 +1,4 @@
-import type { Post } from '~/apis/types';
+import type { Post } from '~/models/placeholder.models';
 
 import type { ReactElement } from 'react';
 

@@ -4,9 +4,9 @@ import type {
   Params,
   ParamParseKey,
 } from 'react-router-dom';
-import type { User, Photo } from '~/apis/types';
+import type { User, Photo } from '~/models/placeholder.models';
 
-import { getUsers, getUser, getPhoto } from '~/apis';
+import { placeholderService } from '~/services/placeholder.service';
 
 const Paths = {
   userDetails: 'users/:userID',
@@ -23,7 +23,7 @@ export const getUsersLoader = async ({
 }): Promise<{ users: User[]; searchQuery: string | null }> => {
   const url = new URL(request.url);
   const searchQuery = url.searchParams.get('search');
-  const users = await getUsers(searchQuery);
+  const users = await placeholderService.getUsers(searchQuery);
   return { users, searchQuery };
 };
 
@@ -31,8 +31,8 @@ export const getuserDetailsLoader: LoaderFunction = async ({
   params,
 }: UserDetailsLoaderArgs): Promise<[User, Photo]> => {
   const res = await Promise.all([
-    getUser(Number(params.userID)),
-    getPhoto(Number(params.userID)),
+    placeholderService.getUser(Number(params.userID)),
+    placeholderService.getPhoto(Number(params.userID)),
   ]);
   return res;
 };

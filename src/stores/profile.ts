@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { createWithEqualityFn } from 'zustand/traditional';
 
 interface ProfileStore {
   canEdit: boolean;
@@ -8,7 +8,7 @@ interface UseProfileStore extends ProfileStore {
   setCanEdit: (flag: boolean) => void;
 }
 
-export const useProfileStore = create<UseProfileStore>((set) => ({
+export const useProfileStore = createWithEqualityFn<UseProfileStore>((set) => ({
   canEdit: false,
   setCanEdit: (flag) =>
     set((state) => ({
