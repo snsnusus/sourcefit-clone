@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react';
+import { type ReactElement, useRef, useState, type ReactNode } from 'react';
 import { Box, Typography, Paper, Stack } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
@@ -12,18 +12,18 @@ const FileUploadZone = ({
   onFilesSelected,
   multiple = true,
   criteria,
-}: FileUploadZoneProps) => {
+}: FileUploadZoneProps): ReactElement => {
   const [isDragActive, setIsDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleDrag = (e: React.DragEvent) => {
+  const handleDrag = (e: React.DragEvent): void => {
     e.preventDefault();
     if (e.type === 'dragenter' || e.type === 'dragover') setIsDragActive(true);
     else if (e.type === 'dragleave' || e.type === 'drop')
       setIsDragActive(false);
   };
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = (e: React.DragEvent): void => {
     e.preventDefault();
     setIsDragActive(false);
     if (e.dataTransfer.files?.length) {
@@ -31,7 +31,7 @@ const FileUploadZone = ({
     }
   };
 
-  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files?.length) {
       onFilesSelected(Array.from(e.target.files));
     }

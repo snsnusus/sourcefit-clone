@@ -54,7 +54,11 @@ const ControlledFileUpload = ({
   });
 
   return (
-    <Stack gap={2}>
+    <Stack
+      sx={{
+        gap: 2,
+      }}
+    >
       <Box>
         <Avatar
           src={file.preview}
@@ -62,7 +66,12 @@ const ControlledFileUpload = ({
           sx={{ width: '100%', height: '250px', objectFit: 'cover' }}
         />
         {file.preview && (
-          <Stack direction="row" alignItems="center">
+          <Stack
+            sx={{
+              direction: 'row',
+              alignItems: 'center',
+            }}
+          >
             <Typography>{file.name}</Typography>
             <Typography>{file.size}</Typography>
             <Typography>{file.type.split('/')[1].toUpperCase()}</Typography>

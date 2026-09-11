@@ -1,4 +1,9 @@
-import type { Barangay, City, Office, Region } from '~/models/location.models';
+import type {
+  Barangay,
+  City,
+  RawOffice,
+  Region,
+} from '~/models/location.models';
 import { mockClient } from '~/api/client';
 
 export const locationService = {
@@ -22,8 +27,8 @@ export const locationService = {
     const { data } = await mockClient.get<Region[]>('/regions');
     return data.sort((a, b) => a.name.localeCompare(b.name));
   },
-  getOffices: async (): Promise<Office[]> => {
-    const { data } = await mockClient.get<Office[]>('/offices');
+  getOffices: async (): Promise<RawOffice[]> => {
+    const { data } = await mockClient.get<RawOffice[]>('/offices');
     return data;
   },
 };

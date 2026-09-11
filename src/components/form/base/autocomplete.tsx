@@ -79,7 +79,7 @@ export const Autocomplete = <
   const [isCreating, setIsCreating] = useState(false);
   const defaultFilter = createFilterOptions<T>();
 
-  const resolvedGetOptionLabel = (option: T | CreateOption) => {
+  const resolvedGetOptionLabel = (option: T | CreateOption): string => {
     if (isCreateOption(option)) return getCreateOptionLabel(option.inputValue);
     return getOptionLabel ? getOptionLabel(option as T) : String(option);
   };
@@ -113,7 +113,7 @@ export const Autocomplete = <
     event: React.SyntheticEvent,
     newValue: T | T[] | null,
     reason: string
-  ) => {
+  ): Promise<void> => {
     if (onCreate && newValue && isCreateOption(newValue as any)) {
       const { inputValue } = newValue as unknown as CreateOption;
       setIsCreating(true);

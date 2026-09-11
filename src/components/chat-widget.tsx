@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  type ReactElement,
+} from 'react';
 
 import { useWebSocket } from '~/contexts/websocket.context';
 import { useAuth } from '~/contexts/auth.context';
@@ -37,7 +43,7 @@ const ChatWidget = ({
   recipient,
   onClose,
   directoryOffsetWidth,
-}: ChatWidgetProps) => {
+}: ChatWidgetProps): ReactElement | null => {
   const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(true);
   const [text, setText] = useState('');
@@ -49,12 +55,12 @@ const ChatWidget = ({
 
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  const fullName = user ? `${user.firstName} ${user.lastName}` : '';
+  const fullName = user ? `${user.firstname} ${user.lastname}` : '';
 
   useEffect(() => {
     if (!currentRoomId) return;
 
-    const loadChatHistory = async () => {
+    const loadChatHistory = async (): Promise<void> => {
       try {
         const res = await mockClient.get('/messages', {
           params: { roomId: currentRoomId },
@@ -67,25 +73,28 @@ const ChatWidget = ({
     loadChatHistory();
   }, [currentRoomId]);
 
-  const activeRoomMessages = [
-    ...historyMessages.map((m) => ({
-      user: m.senderName,
-      text: m.text,
-      timestamp: m.timestamp,
-      roomId: m.roomId,
-    })),
-    ...liveMessages.filter((m: any) => m.roomId === currentRoomId),
-  ];
+  const activeRoomMessages = useMemo(
+    () => [
+      ...historyMessages.map((m) => ({
+        user: m.senderName,
+        text: m.text,
+        timestamp: m.timestamp,
+        roomId: m.roomId,
+      })),
+      ...liveMessages.filter((m: any) => m.roomId === currentRoomId),
+    ],
+    [historyMessages, liveMessages, currentRoomId]
+  );
 
   useEffect(() => {
     if (isOpen) chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [activeRoomMessages, isOpen]);
 
-  const handleToggleChat = () => {
+  const handleToggleChat = (): void => {
     setIsOpen((prev) => !prev);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     if (!text.trim() || !user || !recipient) return;
 
@@ -101,7 +110,7 @@ const ChatWidget = ({
       senderName: displayName,
       recipientId: recipient.id,
       roomId: currentRoomId,
-      avatar: user.avatar || '',
+      avatar: user.avatarUrl || '',
       timestamp: timestampString,
     };
 
@@ -201,7 +210,7 @@ const ChatWidget = ({
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
             {activeRoomMessages.map((msg, idx) => {
-              const isMe = msg.user === `${user?.firstName} ${user?.lastName}`;
+              const isMe = msg.user === `${user?.firstname} ${user?.lastname}`;
               const isFirstInSequence =
                 idx === 0 || activeRoomMessages[idx - 1]?.user !== msg.user;
 

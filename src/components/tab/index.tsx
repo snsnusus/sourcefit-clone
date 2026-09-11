@@ -4,8 +4,6 @@ import {
   type ReactNode,
   type SyntheticEvent,
 } from 'react';
-
-import Box from '@mui/material/Box';
 import MuiTab from '@mui/material/Tab';
 import Tabs, { type TabsProps as MuiTabsProps } from '@mui/material/Tabs';
 import Stack from '@mui/material/Stack';

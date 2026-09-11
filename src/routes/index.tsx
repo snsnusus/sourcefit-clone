@@ -1,7 +1,12 @@
-import type { RouteObject } from 'react-router-dom';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import { loadable } from '~/utils';
+import { type ReactElement } from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  type RouteObject,
+} from 'react-router-dom';
 import ProtectedRoute from './protected-route';
+import { loadable } from '~/utils';
 
 const App = loadable(() => import('~/App'));
 const Login = loadable(() => import('~/pages/login'));
@@ -151,6 +156,6 @@ const routesConfig: RouteObject[] = [
 
 const router = createBrowserRouter(routesConfig);
 
-export default function AppRouter() {
-  return <RouterProvider router={router} />;
-}
+const AppRouter = (): ReactElement => <RouterProvider router={router} />;
+
+export default AppRouter;

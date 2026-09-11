@@ -1,8 +1,9 @@
 import { useController, useFormContext } from 'react-hook-form';
-import { MuiTelInputInfo } from 'mui-tel-input';
+import { type MuiTelInputInfo } from 'mui-tel-input';
 import { PhoneNumberInput } from '~/components/form/base/phone-number-input';
 
 import { formatPhoneNumber } from '~/utils/phone-number.utils';
+import { type ReactElement } from 'react';
 
 type PhoneNumberValue = {
   countryCode: string;
@@ -18,7 +19,7 @@ type ControlledPhoneNumberProps = {
 
 export const ControlledPhoneNumberInput = ({
   name,
-}: ControlledPhoneNumberProps) => {
+}: ControlledPhoneNumberProps): ReactElement => {
   const { control } = useFormContext();
 
   const {
@@ -30,7 +31,7 @@ export const ControlledPhoneNumberInput = ({
     defaultValue: null,
   });
 
-  const handleChange = (raw: string, info: MuiTelInputInfo) => {
+  const handleChange = (raw: string, info: MuiTelInputInfo): void => {
     const nextValue: PhoneNumberValue = {
       countryCode: info.countryCode ?? '',
       dialCode: info.countryCallingCode ?? '',

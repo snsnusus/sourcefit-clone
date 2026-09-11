@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from 'react';
+import { type FormEvent, type ReactElement, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '~/contexts/auth.context';
 
@@ -20,9 +20,8 @@ import {
 import { Visibility, VisibilityOff, Google, GitHub } from '@mui/icons-material';
 
 import companyLogo from '../../../assets/logo-long.png';
-import backgroundGraphic from '../../../assets/sourcefit.png';
 
-export default function Login() {
+const Login = (): ReactElement => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
@@ -34,7 +33,7 @@ export default function Login() {
 
   const destination = location.state?.from?.pathname || '/';
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
     if (!username.trim() || !password.trim()) return;
@@ -69,36 +68,7 @@ export default function Login() {
         px: 2,
 
         position: 'relative',
-        overflow: 'hidden', // Keeps the floating stripe safely clipped inside the screen
-        backgroundImage: `url(${backgroundGraphic})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'left bottom',
-        backgroundSize: { xs: '150px', sm: '250px', md: '350px' },
-
-        // '&::before': {
-        //   content: '""',
-        //   position: 'absolute',
-        //   top: 0,
-        //   right: 0,
-        //   width: '100%',
-        //   height: '100%',
-        //   pointerEvents: 'none',
-
-        //   backgroundImage: (theme) => `
-        //     linear-gradient(
-        //       225deg,
-        //       ${theme.palette.info.main} 0%,
-        //       ${theme.palette.info.main} 8%,
-
-        //       ${theme.palette.primary.main} 8.1%,
-        //       ${theme.palette.primary.main} 16%,
-
-        //       transparent 8.2%
-        //     )
-        //   `,
-        //   backgroundRepeat: 'no-repeat',
-        //   backgroundPosition: 'top right',
-        // },
+        overflow: 'hidden',
       }}
     >
       <Container maxWidth="sm">
@@ -140,7 +110,13 @@ export default function Login() {
               mb: 4,
             }}
           >
-            <Typography variant="h5" fontWeight={700} gutterBottom>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 700,
+              }}
+              gutterBottom
+            >
               Welcome
             </Typography>
             <Typography variant="body2" color="text.secondary">
@@ -160,7 +136,7 @@ export default function Login() {
               autoFocus
               variant="outlined"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e): void => setUsername(e.target.value)}
               placeholder="e.g. CielDev"
               sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
             />
@@ -229,8 +205,8 @@ export default function Login() {
               <Typography
                 variant="body2"
                 color="primary"
-                fontWeight={500}
                 sx={{
+                  fontWeight: 500,
                   cursor: 'pointer',
                   '&:hover': { textDecoration: 'underline' },
                 }}
@@ -313,4 +289,6 @@ export default function Login() {
       </Container>
     </Box>
   );
-}
+};
+
+export default Login;

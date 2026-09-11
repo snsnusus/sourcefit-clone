@@ -1,3 +1,4 @@
+import type { Department } from '~/models/department.models';
 import { type ReactElement } from 'react';
 import { useFormContext } from 'react-hook-form';
 import {
@@ -13,32 +14,28 @@ import {
   Divider,
   Grid,
   MenuItem,
-  Paper,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-
 import { ControlledAutocomplete } from '~/components/form/controlled/autocomplete';
 import { ControlledTextField } from '~/components/form/controlled/textfield';
 import ControlledDatePicker from '~/components/form/controlled/controlled-datepicker';
 import DataDisplayRow from '~/components/ui/data-display-row';
-
 import { generateMockEmployeeId } from '~/utils';
 
 export const EmploymentDetails = (): ReactElement => {
   const { watch, setValue } = useFormContext<any>();
 
   const departmentId = watch('departmentId') ?? '';
-  const selectedDepartment = watch('departmentId') ?? '';
 
   const { data: departments = [] } = useGetAllDepartments();
   const { data: positions = [] } = useGetPositionsByDepartment(departmentId);
 
   const handleEmployeeTypeChange = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  ): void => {
     const selectedType = event.target.value;
 
     setValue('type', selectedType);
@@ -93,13 +90,16 @@ export const EmploymentDetails = (): ReactElement => {
                   <ControlledAutocomplete
                     name="departmentId"
                     valueKey="id"
-                    options={departments}
+                    options={departments as Department[]}
                     getOptionLabel={(option) => {
                       if (typeof option === 'string') return option;
                       return option?.name ?? '';
                     }}
                     onChange={(_, newValue) => {
-                      setValue('departmentId', newValue?.id ?? '');
+                      setValue(
+                        'departmentId',
+                        Array.isArray(newValue) ? '' : newValue?.id ?? ''
+                      );
                       setValue('positionId', '');
                     }}
                   />

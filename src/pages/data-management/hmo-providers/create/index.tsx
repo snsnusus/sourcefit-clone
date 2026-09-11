@@ -13,7 +13,7 @@ const CreateHMOProvider = (): ReactElement => {
     resolver: zodResolver(hmoProviderSchema),
     defaultValues: {},
   });
-  const handleSubmit = (data: any) => {
+  const handleSubmit = (data: any): void => {
     console.log(data, 'data');
   };
 

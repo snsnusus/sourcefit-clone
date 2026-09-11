@@ -51,7 +51,7 @@ const PlanDialog = ({
   open: boolean;
   onClose: () => void;
   onSave: (values: HMOPlanFormValues) => void;
-}) => {
+}): ReactElement => {
   const formMethods = useForm<HMOPlanFormValues>({
     defaultValues: {
       planName: '',
@@ -235,7 +235,7 @@ const PlanDialog = ({
                         fontWeight: 500,
                       }}
                     >
-                      "{memberRole ?? '—'}"
+                      &quot;{memberRole ?? '—'}&quot;
                     </Typography>{' '}
                     and a duplicate as{' '}
                     <Typography
@@ -245,7 +245,7 @@ const PlanDialog = ({
                         fontWeight: 500,
                       }}
                     >
-                      "{otherRole ?? '—'}"
+                      &quot;{otherRole ?? '—'}&quot;
                     </Typography>{' '}
                     , with all other fields identical.
                   </Typography>
@@ -285,22 +285,18 @@ const PlanDialog = ({
 
 export const PlansSection = (): ReactElement => {
   const { control } = useFormContext<HMOProviderFormValues>();
-  const {
-    fields: plans,
-    append,
-    remove,
-  } = useFieldArray({
+  const { fields: plans, remove } = useFieldArray({
     control,
     name: 'plans',
   });
 
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleOpenAdd = () => {
+  const handleOpenAdd = (): void => {
     setDialogOpen(true);
   };
 
-  const handleSave = (values: HMOPlanFormValues) => {
+  const handleSave = (values: HMOPlanFormValues): void => {
     console.log({ ...values }, 'values');
   };
 

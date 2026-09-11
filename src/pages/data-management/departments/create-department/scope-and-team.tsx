@@ -17,7 +17,7 @@ import AddIcon from '@mui/icons-material/Add';
 import DataDisplayRow from '~/components/ui/data-display-row';
 import { UncontrolledUserLookup } from '~/components/modules/user-lookup';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { UserOption } from '~/models/user.models';
+import type { UserOption } from '~/models/user.models';
 
 export const ScopeAndTeam = (): ReactElement => {
   const { watch } = useFormContext<DepartmentFormValues>();
@@ -44,7 +44,7 @@ export const ScopeAndTeam = (): ReactElement => {
 
   const isSubmitDisabled = !title.trim() || !description.trim();
 
-  const handleAddScope = () => {
+  const handleAddScope = (): void => {
     const trimmedTitle = title.trim();
     const trimmedDescription = description.trim();
 
@@ -58,15 +58,15 @@ export const ScopeAndTeam = (): ReactElement => {
     }
   };
 
-  const handleRemoveScope = (indexToRemove: number) => {
+  const handleRemoveScope = (indexToRemove: number): void => {
     removeScope(indexToRemove);
   };
 
-  const handleAddMember = (member: UserOption) => {
+  const handleAddMember = (member: UserOption): void => {
     addMember(member);
   };
 
-  const handleRemoveMember = (indexToRemove: number) => {
+  const handleRemoveMember = (indexToRemove: number): void => {
     removeMember(indexToRemove);
   };
 
@@ -84,7 +84,8 @@ export const ScopeAndTeam = (): ReactElement => {
           Scope & Team Members
         </Typography>
         <Typography variant="caption" color="text.secondary">
-          Define the department's responsibilities and assign its working team.
+          Define the department&apos;s responsibilities and assign it&apos;s
+          working team.
         </Typography>
       </Box>
       <CardContent>

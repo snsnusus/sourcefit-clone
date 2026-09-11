@@ -12,7 +12,7 @@ const ControlledDatePicker = (
   const { name, type, ...rest } = props;
 
   const {
-    field: { ref, ...field },
+    field: { ...field },
   } = useController({
     name,
     defaultValue: type === 'default' ? new Date() : [],

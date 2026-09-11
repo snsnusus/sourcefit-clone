@@ -1,4 +1,4 @@
-import { AddressFormValues } from './address.models';
+import type { AddressFormValues } from './address.models';
 
 export type Gender = 'MALE' | 'FEMALE';
 export type MaritalStatus = 'SINGLE' | 'MARRIED';

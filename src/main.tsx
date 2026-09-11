@@ -5,12 +5,9 @@ import { StrictMode } from 'react';
 
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider, CssBaseline } from '@mui/material';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ModalProvider } from 'mui-modal-provider';
 import { SnackbarProvider, type SnackbarOrigin } from 'notistack';
-
-import { queryClient } from './queries/config';
-
 import { WebSocketProvider } from './contexts/websocket.context';
 import { MockAuthProvider } from './contexts/auth.context';
 import AppRouter from './routes';
@@ -23,6 +20,14 @@ const anchorOrigin: SnackbarOrigin = {
 };
 
 const container = document.getElementById('root') as HTMLElement;
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 createRoot(container).render(
   <StrictMode>

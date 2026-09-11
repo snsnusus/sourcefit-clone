@@ -1,7 +1,7 @@
 import { type DepartmentFormValues } from '~/models/department.models';
-import {
+import type {
   BasePosition,
-  type PositionFormValues,
+  PositionFormValues,
 } from '~/models/position.models';
 import { useState, type ChangeEvent, type ReactElement } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
@@ -44,13 +44,13 @@ export const Position = (): ReactElement => {
     name: 'positions',
   });
 
-  const handleSort = (sortedItems: PositionFormValues[]) => {
+  const handleSort = (sortedItems: PositionFormValues[]): void => {
     replace(sortedItems);
   };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  ): void => {
     const { name, type, value } = e.target;
 
     setFormState((prev) => ({
@@ -60,11 +60,11 @@ export const Position = (): ReactElement => {
     }));
   };
 
-  const handleClear = () => {
+  const handleClear = (): void => {
     setFormState(initialFormState);
   };
 
-  const handleAppend = () => {
+  const handleAppend = (): void => {
     append({
       ...formState,
       sortOrder: fields.length + 1,
@@ -72,7 +72,7 @@ export const Position = (): ReactElement => {
     setFormState(initialFormState);
   };
 
-  const handleRemove = (indexToRemove: number) => {
+  const handleRemove = (indexToRemove: number): void => {
     remove(indexToRemove);
   };
 

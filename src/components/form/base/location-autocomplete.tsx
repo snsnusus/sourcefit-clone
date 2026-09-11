@@ -15,17 +15,15 @@ export const LocationAutocomplete = <T extends LocationOption>({
   onChange,
   options,
   disabled,
-}: LocationAutocompleteProps<T>): ReactElement => {
-  return (
-    <Autocomplete
-      size="small"
-      disabled={disabled}
-      options={options}
-      getOptionLabel={(option) => option.name}
-      isOptionEqualToValue={(option, val) => option.id === val?.id}
-      value={value}
-      onChange={(_, newValue) => onChange(newValue)}
-      renderInput={(params) => <TextField {...params} size="small" />}
-    />
-  );
-};
+}: LocationAutocompleteProps<T>): ReactElement => (
+  <Autocomplete
+    size="small"
+    disabled={disabled}
+    options={options}
+    getOptionLabel={(option) => option.name}
+    isOptionEqualToValue={(option, val) => option.id === val?.id}
+    value={value}
+    onChange={(_, newValue) => onChange(newValue)}
+    renderInput={(params) => <TextField {...params} size="small" />}
+  />
+);

@@ -42,7 +42,13 @@ interface Columns<TData> {
 }
 
 const ActionContainer = ({ children }: PropsWithChildren): ReactElement => (
-  <Stack display="flex" alignItems="center" justifyContent="center">
+  <Stack
+    sx={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
     {children}
   </Stack>
 );

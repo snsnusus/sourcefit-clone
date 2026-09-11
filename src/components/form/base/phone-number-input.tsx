@@ -4,6 +4,6 @@ import { MuiTelInput, type MuiTelInputProps } from 'mui-tel-input';
 export const PhoneNumberInput = ({
   defaultCountry = 'PH',
   ...rest
-}: MuiTelInputProps): ReactElement => {
-  return <MuiTelInput size="small" {...rest} defaultCountry={defaultCountry} />;
-};
+}: MuiTelInputProps): ReactElement => (
+  <MuiTelInput size="small" {...rest} defaultCountry={defaultCountry} />
+);

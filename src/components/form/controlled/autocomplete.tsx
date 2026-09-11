@@ -22,7 +22,6 @@ export const ControlledAutocomplete = <
 ): ReactElement => {
   const {
     name,
-    label,
     defaultValue,
     valueKey,
     options,

@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 import Switch from '../base/switch';
 import {
   type FieldPath,
-  FieldPathValue,
+  type FieldPathValue,
   type FieldValues,
   useController,
 } from 'react-hook-form';

@@ -64,7 +64,7 @@ const IsolatedInput = ({
   name,
   value,
   onChange,
-}: IsolatedInputProps) => {
+}: IsolatedInputProps): ReactElement => {
   const [localValue, setLocalValue] = useState(value);
 
   useEffect(() => {
@@ -109,7 +109,7 @@ export const Address = (): ReactElement => {
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  ): void => {
     const { name, type, value } = e.target;
 
     setFormValues((prev) => ({
@@ -119,7 +119,7 @@ export const Address = (): ReactElement => {
     }));
   };
 
-  const handleAddAddress = () => {
+  const handleAddAddress = (): void => {
     append({
       ...formValues,
       formattedAddress: formatAddress(formValues),

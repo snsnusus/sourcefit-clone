@@ -1,3 +1,2 @@
-export const getPrivateRoomId = (idA: string, idB: string): string => {
-  return [idA, idB].sort().join('-');
-};
+export const getPrivateRoomId = (idA: string, idB: string): string =>
+  [idA, idB].sort().join('-');

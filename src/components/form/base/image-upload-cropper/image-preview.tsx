@@ -164,7 +164,7 @@ const ImagePreview = ({ uploadedFile }: ImagePreviewProps): ReactElement => {
                   fontSize: '1rem',
                 }}
               >
-                Hey there! I'm your dynamic avatar.
+                Hey there! I&apos;m your dynamic avatar.
               </Typography>
               <Typography
                 variant="body2"

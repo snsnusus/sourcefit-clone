@@ -85,14 +85,14 @@ const DynamicAvatar = (): ReactElement => {
               fontSize: '1rem',
             }}
           >
-            Hey there! I'm a dynamic avatar.
+            Hey there! I&apos;m a dynamic avatar.
           </Typography>
           <Typography
             variant="body2"
             sx={{ color: '#607D8B', lineHeight: 1.5 }}
           >
-            Fill-out the form and I'll personalize my appearance based on your
-            inputs.
+            Fill-out the form and I&apos;ll personalize my appearance based on
+            your inputs.
           </Typography>
         </Card>
       </Stack>

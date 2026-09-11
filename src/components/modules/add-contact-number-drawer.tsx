@@ -51,8 +51,8 @@ const AddContactNumberDrawer = ({
   const [otpExpiresAt, setOtpExpiresAt] = useState<number | null>(null);
   const [otpError, setOtpError] = useState<string>('');
 
-  const handleChange = (inputValue: string, info: MuiTelInputInfo) => {
-    setInputValue(inputValue);
+  const handleChange = (input: string, info: MuiTelInputInfo): void => {
+    setInputValue(input);
     // 1. Guard: If the info payload or national number is missing, emit null
     if (!info || !info.nationalNumber) {
       setPhoneNumberDetails(null);
@@ -73,7 +73,7 @@ const AddContactNumberDrawer = ({
     const part3 = rawDigits.substring(6, 10);
 
     // 4. Construct the complete structured object matching your exact schema
-    const phoneNumberDetails: PhoneNumberDetails = {
+    const numberDetails: PhoneNumberDetails = {
       countryCode: 'PH',
       dialCode: '+63',
       raw: rawDigits, // "9365449043"
@@ -86,12 +86,12 @@ const AddContactNumberDrawer = ({
     };
 
     // 5. Emit the completed object up to the parent container
-    setPhoneNumberDetails(phoneNumberDetails);
+    setPhoneNumberDetails(numberDetails);
   };
 
   const toggleDrawer = (open: boolean) => () => setIsOpen(open);
 
-  const handleVerify = async () => {
+  const handleVerify = async (): Promise<void> => {
     if (!phoneNumberDetails) return;
 
     setIsSendingOtp(true);
@@ -129,8 +129,9 @@ const AddContactNumberDrawer = ({
     }
   };
 
-  const handleSave = () => {
-    onSave(phoneNumberDetails!);
+  const handleSave = (): void => {
+    if (!phoneNumberDetails) return;
+    onSave(phoneNumberDetails);
     toggleDrawer(false);
     setPhoneNumberDetails(null);
     setInputValue('');

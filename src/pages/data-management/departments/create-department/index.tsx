@@ -33,7 +33,9 @@ const CreateDepartment = (): ReactElement => {
   const { mutateAsync: createDepartment, isLoading } = useCreateDepartment();
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleSubmit = async (formValues: DepartmentFormValues) => {
+  const handleSubmit = async (
+    formValues: DepartmentFormValues
+  ): Promise<void> => {
     console.log(formValues, 'formValues');
     try {
       createDepartment(formValues, {

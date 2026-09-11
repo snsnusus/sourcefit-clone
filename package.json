@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "test": "vitest --watch=false",
     "test:watch": "vitest",
-    "lint": "eslint . --ext ts,tsx"
+    "lint": "eslint src --ext ts,tsx"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

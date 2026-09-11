@@ -1,12 +1,11 @@
 import type { UserModel } from '~/models/user.models';
-
 import {
   createContext,
+  type ReactElement,
   useContext,
   useState,
   type PropsWithChildren,
 } from 'react';
-
 import { authService } from '~/services/auth.service';
 
 interface AuthContextType {
@@ -18,7 +17,9 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function MockAuthProvider({ children }: PropsWithChildren) {
+export const MockAuthProvider = ({
+  children,
+}: PropsWithChildren): ReactElement => {
   const [user, setUser] = useState<UserModel | null>(() => {
     const savedUser = localStorage.getItem('auth_user');
     return savedUser ? JSON.parse(savedUser) : null;
@@ -53,7 +54,7 @@ export function MockAuthProvider({ children }: PropsWithChildren) {
     }
   };
 
-  const logout = () => {
+  const logout = (): void => {
     localStorage.removeItem('auth_user');
     setUser(null); // Instantly boots unauthorized users out!
   };
@@ -65,11 +66,11 @@ export function MockAuthProvider({ children }: PropsWithChildren) {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
-export function useAuth() {
+export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (!context)
     throw new Error('useAuth must be used within a MockAuthProvider');
   return context;
-}
+};

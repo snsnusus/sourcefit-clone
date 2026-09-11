@@ -37,7 +37,7 @@ export const Leadership = (): ReactElement => {
   const handleInterceptSelection = (
     fieldName: 'primaryContact' | 'secondaryContact',
     selectedUser: UserOption | null
-  ) => {
+  ): void => {
     // 1. If cleared (selectedUser is null), update form state immediately
     if (!selectedUser) {
       setValue(fieldName, null, { shouldValidate: true, shouldDirty: true });
@@ -60,7 +60,7 @@ export const Leadership = (): ReactElement => {
   /**
    * Modal Confirmation Handler
    */
-  const handleConfirmTransfer = () => {
+  const handleConfirmTransfer = (): void => {
     if (pendingSelection?.user) {
       // Commit the selection to React Hook Form state now
       setValue(pendingSelection.fieldName, pendingSelection.user, {
@@ -103,7 +103,10 @@ export const Leadership = (): ReactElement => {
                     );
                   }}
                   onChange={(_, newValue) =>
-                    handleInterceptSelection('primaryContact', newValue)
+                    handleInterceptSelection(
+                      'primaryContact',
+                      newValue as UserOption
+                    )
                   }
                 />
               </DataDisplayRow>
@@ -120,7 +123,10 @@ export const Leadership = (): ReactElement => {
                     );
                   }}
                   onChange={(_, newValue) =>
-                    handleInterceptSelection('secondaryContact', newValue)
+                    handleInterceptSelection(
+                      'secondaryContact',
+                      newValue as UserOption
+                    )
                   }
                 />
               </DataDisplayRow>
