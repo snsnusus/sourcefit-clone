@@ -10,7 +10,3 @@ export const mockClient = createRequest({
     'Content-Type': 'application/json',
   },
 });
-
-export const placeholderClient = createRequest({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-});
