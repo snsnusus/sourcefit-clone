@@ -1,5 +1,3 @@
-import { rest } from 'msw';
+import { http, HttpResponse } from 'msw';
 
-export const handlers = [
-  rest.get('*/posts', (_req, res, ctx) => res(ctx.status(200))),
-];
+export const handlers = [];
