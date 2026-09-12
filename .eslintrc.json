@@ -10,21 +10,22 @@
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
-    "plugin:prettier/recommended" // ALWAYS LAST
+    "plugin:prettier/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": "./tsconfig.json"
+    "sourceType": "module"
   },
   "settings": {
     "react": {
       "version": "detect"
     },
     "import/resolver": {
-      "typescript": {},
+      "typescript": {
+        "project": "./tsconfig.json"
+      },
       "node": {
         "paths": ["src"]
       }
@@ -38,13 +39,22 @@
     "prettier"
   ],
   "rules": {
-    // RECOMMENDED | REACT-TYPESCRIPT
-    "arrow-body-style": ["error", "as-needed"],
+    "import/no-unresolved": "error",
+    "import/named": "error",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
+    "@typescript-eslint/no-use-before-define": "error",
+    "arrow-body-style": "warn",
+    "react/no-unescaped-entities": "warn",
+    "@typescript-eslint/no-shadow": "warn",
     "react/self-closing-comp": ["error", { "component": true, "html": true }],
     "react/react-in-jsx-scope": "off",
     "react/display-name": "off",
     "react/function-component-definition": [
-      "error",
+      "warn",
       {
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
@@ -59,55 +69,23 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/explicit-function-return-type": [
-      "error",
-      {
-        "allowExpressions": true
-      }
+      "warn",
+      { "allowExpressions": true }
     ],
-    "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/dot-notation": "off",
+    "dot-notation": "error",
+    "@typescript-eslint/no-implied-eval": "off",
+    "no-implied-eval": "error",
+    "@typescript-eslint/no-throw-literal": "off",
+    "no-throw-literal": "error",
+    "@typescript-eslint/return-await": "off",
     "prettier/prettier": [
       "error",
       {
-        "singeQoute": true,
+        "singleQuote": true,
         "endOfLine": "auto"
       },
       { "usePrettierrc": true }
-    ],
-    // "import/order": [
-    //   "error",
-    //   {
-    //     "groups": [
-    //       "type",
-    //       "builtin",
-    //       "external",
-    //       "internal",
-    //       "parent",
-    //       "sibling",
-    //       "index",
-    //       "object"
-    //     ],
-    //     "pathGroups": [
-    //       {
-    //         "pattern": "react",
-    //         "group": "builtin",
-    //         "position": "before"
-    //       },
-    //       {
-    //         "pattern": "react",
-    //         "group": "external",
-    //         "position": "before"
-    //       }
-    //     ],
-    //     "pathGroupsExcludedImportTypes": ["react"],
-    //     "newlines-between": "always",
-    //     "alphabetize": { "order": "ignore", "caseInsensitive": true }
-    //   }
-    // ]
-    // "no-restricted-imports": [
-    //   "error",
-    //   {
-    //     "patterns": ["../"]
-    //   }
-    // ]
+    ]
   }
 }

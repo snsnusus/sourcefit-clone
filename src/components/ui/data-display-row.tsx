@@ -45,39 +45,37 @@ const DataDisplayRow = ({
   action,
   config,
   children,
-}: PropsWithChildren<DataDisplayRowProps>): ReactElement => {
-  return (
+}: PropsWithChildren<DataDisplayRowProps>): ReactElement => (
+  <Stack
+    sx={{
+      ...rowConfig,
+      ...(config?.row ? (config.row as object) : {}),
+    }}
+  >
+    <Box sx={{ ...labelBoxConfig, ...config?.labelBox }}>
+      <Typography {...labelProps} {...config?.label}>
+        {label}:
+      </Typography>
+    </Box>
     <Stack
+      spacing={1}
       sx={{
-        ...rowConfig,
-        ...(config?.row ? (config.row as object) : {}),
+        width: '100%',
       }}
     >
-      <Box sx={{ ...labelBoxConfig, ...config?.labelBox }}>
-        <Typography {...labelProps} {...config?.label}>
-          {label}:
-        </Typography>
-      </Box>
-      <Stack
-        spacing={1}
-        sx={{
-          width: '100%',
-        }}
-      >
-        {children}
-        {action && (
-          <Stack
-            direction="row"
-            sx={{
-              justifyContent: 'flex-end',
-            }}
-          >
-            {action}
-          </Stack>
-        )}
-      </Stack>
+      {children}
+      {action && (
+        <Stack
+          direction="row"
+          sx={{
+            justifyContent: 'flex-end',
+          }}
+        >
+          {action}
+        </Stack>
+      )}
     </Stack>
-  );
-};
+  </Stack>
+);
 
 export default DataDisplayRow;

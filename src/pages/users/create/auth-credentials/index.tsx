@@ -1,5 +1,3 @@
 import { type ReactElement } from 'react';
 
-export const AuthCredentials = (): ReactElement => {
-  return <div>AuthCredentials</div>;
-};
+export const AuthCredentials = (): ReactElement => <div>AuthCredentials</div>;

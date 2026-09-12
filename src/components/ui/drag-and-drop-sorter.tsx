@@ -6,7 +6,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
-  DragEndEvent,
+  type DragEndEvent,
 } from '@dnd-kit/core';
 import {
   arrayMove,
@@ -43,12 +43,12 @@ interface SortableItemProps<T extends Identifiable> {
 }
 
 // 1. Generic Sortable Wrapper
-function SortableItem<T extends Identifiable>({
+const SortableItem = <T extends Identifiable>({
   item,
   index,
   showIndexBadge,
   renderItem,
-}: SortableItemProps<T>): ReactElement {
+}: SortableItemProps<T>): ReactElement => {
   const {
     attributes,
     listeners,
@@ -125,7 +125,7 @@ function SortableItem<T extends Identifiable>({
       </Box>
     </ListItem>
   );
-}
+};
 
 // 2. Generic Main Container
 interface DragAndDropSorterProps<T extends Identifiable> {
@@ -136,13 +136,13 @@ interface DragAndDropSorterProps<T extends Identifiable> {
   maxWidth?: number | string;
 }
 
-export function DragAndDropSorter<T extends Identifiable>({
+export const DragAndDropSorter = <T extends Identifiable>({
   items,
   onReorder,
   renderItem,
   showIndexBadge = true,
   maxWidth = 560,
-}: DragAndDropSorterProps<T>): ReactElement {
+}: DragAndDropSorterProps<T>): ReactElement => {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -150,7 +150,7 @@ export function DragAndDropSorter<T extends Identifiable>({
     })
   );
 
-  const handleDragEnd = (event: DragEndEvent) => {
+  const handleDragEnd = (event: DragEndEvent): void => {
     const { active, over } = event;
 
     if (over && active.id !== over.id) {
@@ -202,4 +202,4 @@ export function DragAndDropSorter<T extends Identifiable>({
       </SortableContext>
     </DndContext>
   );
-}
+};

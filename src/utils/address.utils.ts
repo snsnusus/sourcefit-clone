@@ -1,7 +1,7 @@
 import type { AddressFormValues } from '~/pages/users/create/contact-details/address';
 
-export const formatAddress = (values: AddressFormValues): string => {
-  return [
+export const formatAddress = (values: AddressFormValues): string =>
+  [
     values.addressLine1,
     values.addressLine2,
     values.barangay?.name,
@@ -11,4 +11,3 @@ export const formatAddress = (values: AddressFormValues): string => {
   ]
     .filter(Boolean)
     .join(', ');
-};

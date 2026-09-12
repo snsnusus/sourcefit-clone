@@ -1,6 +1,4 @@
-import type { Department } from '~/models/department.models';
 import type { Region, City, Barangay } from '~/models/location.models';
-
 import { useState, type ReactElement } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import {

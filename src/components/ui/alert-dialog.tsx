@@ -32,103 +32,101 @@ export const AlertDialog: React.FC<AlertDialogProps> = ({
   loading = false,
   onClose,
   onConfirm,
-}) => {
-  return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      maxWidth="xs"
-      fullWidth
-      slotProps={{
-        paper: {
-          sx: {
-            borderRadius: 3,
-            p: 2,
-            textAlign: 'center',
-            position: 'relative',
-          },
+}) => (
+  <Dialog
+    open={open}
+    onClose={onClose}
+    maxWidth="xs"
+    fullWidth
+    slotProps={{
+      paper: {
+        sx: {
+          borderRadius: 3,
+          p: 2,
+          textAlign: 'center',
+          position: 'relative',
         },
+      },
+    }}
+  >
+    <IconButton
+      onClick={onClose}
+      disabled={loading}
+      sx={{
+        position: 'absolute',
+        right: 12,
+        top: 12,
+        color: 'text.secondary',
       }}
     >
-      <IconButton
+      <CloseIcon fontSize="small" />
+    </IconButton>
+
+    <DialogContent sx={{ pt: 2, pb: 1, px: 2 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          mb: 2,
+        }}
+      >
+        <Avatar
+          sx={{
+            bgcolor: 'warning.light',
+            width: 75,
+            height: 75,
+          }}
+        >
+          <WarningRoundedIcon sx={{ fontSize: 45 }} />
+        </Avatar>
+      </Box>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{
+          fontWeight: 700,
+        }}
+      >
+        {title}
+      </Typography>
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        sx={{ lineHeight: 1.5 }}
+      >
+        {description}
+      </Typography>
+    </DialogContent>
+
+    <DialogActions sx={{ justifyContent: 'center', gap: 1, pt: 2, px: 2 }}>
+      <Button
+        variant="text"
+        color="inherit"
         onClick={onClose}
         disabled={loading}
         sx={{
-          position: 'absolute',
-          right: 12,
-          top: 12,
-          color: 'text.secondary',
+          minWidth: 120,
+          textTransform: 'none',
+          fontWeight: 600,
         }}
       >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-
-      <DialogContent sx={{ pt: 2, pb: 1, px: 2 }}>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            mb: 2,
-          }}
-        >
-          <Avatar
-            sx={{
-              bgcolor: 'warning.light',
-              width: 75,
-              height: 75,
-            }}
-          >
-            <WarningRoundedIcon sx={{ fontSize: 45 }} />
-          </Avatar>
-        </Box>
-        <Typography
-          variant="h6"
-          gutterBottom
-          sx={{
-            fontWeight: 700,
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ lineHeight: 1.5 }}
-        >
-          {description}
-        </Typography>
-      </DialogContent>
-
-      <DialogActions sx={{ justifyContent: 'center', gap: 1, pt: 2, px: 2 }}>
-        <Button
-          variant="text"
-          color="inherit"
-          onClick={onClose}
-          disabled={loading}
-          sx={{
-            minWidth: 120,
-            textTransform: 'none',
-            fontWeight: 600,
-          }}
-        >
-          {cancelText}
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={onConfirm}
-          disabled={loading}
-          sx={{
-            minWidth: 120,
-            textTransform: 'none',
-            fontWeight: 600,
-            boxShadow: 'none',
-            '&:hover': { boxShadow: 'none' },
-          }}
-        >
-          {confirmText}
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-};
+        {cancelText}
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={onConfirm}
+        disabled={loading}
+        sx={{
+          minWidth: 120,
+          textTransform: 'none',
+          fontWeight: 600,
+          boxShadow: 'none',
+          '&:hover': { boxShadow: 'none' },
+        }}
+      >
+        {confirmText}
+      </Button>
+    </DialogActions>
+  </Dialog>
+);

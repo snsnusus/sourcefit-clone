@@ -1,6 +1,5 @@
 import type { UserModel } from '~/models/user.models';
-import type { Theme, CSSObject } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 import { useAuth } from '~/contexts/auth.context';
 import { mockClient } from '~/api/client';
 import {
@@ -20,10 +19,12 @@ import {
   Badge,
   Box,
   Tooltip,
+  type Theme,
+  type CSSObject,
 } from '@mui/material';
 
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import { RawPosition } from '~/models/position.models';
+import type { RawPosition } from '~/models/position.models';
 
 interface UserDirectoryProps {
   isOpen: boolean;
@@ -80,11 +81,11 @@ const UserDirectoryDrawer = styled(Drawer, {
   }),
 }));
 
-export default function UserDirectory({
+const UserDirectory = ({
   isOpen,
   onSelectUser,
   activeRecipientId,
-}: UserDirectoryProps) {
+}: UserDirectoryProps): ReactElement => {
   const { user: currentUser } = useAuth();
   const [users, setUsers] = useState<
     Array<UserModel & { position: RawPosition | null }>
@@ -102,7 +103,7 @@ export default function UserDirectory({
   );
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchUsers = async (): Promise<void> => {
       try {
         const [usersRes, positionsRes] = await Promise.all([
           mockClient.get<UserModel[]>('/users'),
@@ -187,7 +188,7 @@ export default function UserDirectory({
     return () => {
       ws.close();
     };
-  }, []);
+  }, [currentUser?.id]);
 
   return (
     <UserDirectoryDrawer
@@ -305,4 +306,6 @@ export default function UserDirectory({
       </Paper>
     </UserDirectoryDrawer>
   );
-}
+};
+
+export default UserDirectory;

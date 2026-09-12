@@ -1,27 +1,24 @@
-import { renderHook, waitFor } from '@testing-library/react';
-// render, screen,
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
+import { generateMockEmployeeId } from '~/utils';
 
-// import App from '~/App';
-import { usePostsQuery } from '~/queries';
-import { TestQueryProviders } from '~/test/providers';
+describe('generateMockEmployeeId', () => {
+  it('starts with the given department code followed by a hyphen', () => {
+    const id = generateMockEmployeeId('E');
 
-// describe('APP', () => {
-//   it('SHOULD RENDER THE TEXT IN THE APP', () => {
-//     render(<App />);
+    expect(id.startsWith('E-')).toBe(true);
+  });
 
-//     expect(screen.getByRole('table')).toBeInTheDocument();
-//   });
-// });
+  it('matches the CODE-YY-NNN shape', () => {
+    const id = generateMockEmployeeId('A');
 
-describe('HOOKS', () => {
-  it('TESTING CUSTOM REACT-QUERY HOOK', async () => {
-    const wrapper = TestQueryProviders;
+    expect(id).toMatch(/^A-\d{2}-\d{3}$/);
+  });
 
-    const { result } = renderHook(() => usePostsQuery(''), { wrapper });
+  it('produces a 2-digit year matching the current year', () => {
+    const expectedYear = new Date().getFullYear().toString().slice(-2);
 
-    await waitFor(() => result.current.data);
+    const id = generateMockEmployeeId('X');
 
-    expect(result.current.data).toEqual(undefined);
+    expect(id).toContain(`-${expectedYear}-`);
   });
 });

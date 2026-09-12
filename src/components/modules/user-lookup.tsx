@@ -40,8 +40,8 @@ export const UncontrolledUserLookup = <
         const user = option as UserOption;
         return user?.formattedName || '';
       }}
-      renderOption={(props, option) => {
-        const { key, ...optionProps } = props;
+      renderOption={(renderProps, option) => {
+        const { key, ...optionProps } = renderProps;
         const user = option as UserOption;
 
         return (
@@ -94,7 +94,6 @@ export const ControlledUserLookup = <
   name,
   defaultValue,
   control,
-  label,
   ...rest
 }: ControlledUserLookupProps<
   Multiple,

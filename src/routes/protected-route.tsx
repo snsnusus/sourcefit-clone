@@ -1,3 +1,4 @@
+import { type ReactElement } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '~/contexts/auth.context';
 
@@ -5,7 +6,7 @@ interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+const ProtectedRoute = ({ children }: ProtectedRouteProps): ReactElement => {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
 
@@ -14,4 +15,6 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   }
 
   return <>{children}</>;
-}
+};
+
+export default ProtectedRoute;

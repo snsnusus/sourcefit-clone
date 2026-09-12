@@ -37,7 +37,7 @@ export const PersonalInfo = (): ReactElement => {
 
   const avatar = watch('avatar');
 
-  const handleFileUpload = (files: File[]) => {
+  const handleFileUpload = (files: File[]): void => {
     if (files && files.length > 0) {
       const fileToUpload = files[0];
       setUploadedFile(fileToUpload);
@@ -50,7 +50,7 @@ export const PersonalInfo = (): ReactElement => {
     }
   };
 
-  const handleCropComplete = (croppedImage: File) => {
+  const handleCropComplete = (croppedImage: File): void => {
     setValue('avatar', croppedImage);
   };
 

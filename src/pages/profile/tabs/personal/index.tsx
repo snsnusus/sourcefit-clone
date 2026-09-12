@@ -37,12 +37,10 @@ export const Personal = (): ReactElement => {
     birthplace,
     nationality,
     maritalStatus,
-    religion,
   } = getValues();
 
-  const { canEdit, setCanEdit } = useProfileStore(
+  const { setCanEdit } = useProfileStore(
     (state) => ({
-      canEdit: state.canEdit,
       setCanEdit: state.setCanEdit,
     }),
     shallow

@@ -67,7 +67,7 @@ const Layout = (props: PropsWithChildren): ReactElement => {
 
   const { children } = props;
 
-  const handleSelectUserChat = (selectedUser: any) => {
+  const handleSelectUserChat = (selectedUser: any): void => {
     // 1. Set the last clicked user as the active maximized target
     setActiveChatTarget(selectedUser);
 
@@ -82,7 +82,7 @@ const Layout = (props: PropsWithChildren): ReactElement => {
     });
   };
 
-  const handleCloseSession = (userIdToClose: string) => {
+  const handleCloseSession = (userIdToClose: string): void => {
     setActiveChatSessions((prev) =>
       prev.filter((user) => user.id !== userIdToClose)
     );
@@ -97,15 +97,15 @@ const Layout = (props: PropsWithChildren): ReactElement => {
     }
   };
 
-  const handleOpenBadgeMenu = (event: MouseEvent<HTMLElement>) => {
+  const handleOpenBadgeMenu = (event: MouseEvent<HTMLElement>): void => {
     setBadgeMenuAnchor(event.currentTarget);
   };
 
-  const handleCloseBadgeMenu = () => {
+  const handleCloseBadgeMenu = (): void => {
     setBadgeMenuAnchor(null);
   };
 
-  const handleSwitchActiveChat = (selectedUser: any) => {
+  const handleSwitchActiveChat = (selectedUser: any): void => {
     setActiveChatTarget(selectedUser);
     handleCloseBadgeMenu();
   };
@@ -138,10 +138,10 @@ const Layout = (props: PropsWithChildren): ReactElement => {
                 component="main"
                 sx={{
                   minWidth: 0,
-                  transition: (theme) =>
-                    theme.transitions.create('margin', {
-                      easing: theme.transitions.easing.sharp,
-                      duration: theme.transitions.duration.leavingScreen,
+                  transition: (sxTheme) =>
+                    sxTheme.transitions.create('margin', {
+                      easing: sxTheme.transitions.easing.sharp,
+                      duration: sxTheme.transitions.duration.leavingScreen,
                     }),
                 }}
               >
@@ -175,23 +175,23 @@ const Layout = (props: PropsWithChildren): ReactElement => {
               sx={{
                 position: 'fixed',
                 top: '140px',
-                right: (theme) =>
+                right: (sxTheme) =>
                   `${
                     isDirectoryOpen
-                      ? theme.custom.drawer.chatDirectory.width.open
-                      : theme.custom.drawer.chatDirectory.width.close
+                      ? sxTheme.custom.drawer.chatDirectory.width.open
+                      : sxTheme.custom.drawer.chatDirectory.width.close
                   }px`,
                 transform: 'translateX(50%)',
-                transition: (theme) =>
-                  theme.transitions.create('right', {
-                    easing: theme.transitions.easing.sharp,
-                    duration: theme.transitions.duration.enteringScreen,
+                transition: (sxTheme) =>
+                  sxTheme.transitions.create('right', {
+                    easing: sxTheme.transitions.easing.sharp,
+                    duration: sxTheme.transitions.duration.enteringScreen,
                   }),
                 backgroundColor: 'background.paper',
                 border: '1px solid',
                 borderColor: 'divider',
                 boxShadow: '0px 3px 6px rgba(0,0,0,0.15)',
-                zIndex: (theme) => theme.zIndex.drawer,
+                zIndex: (sxTheme) => sxTheme.zIndex.drawer,
                 '&:hover': {
                   backgroundColor: 'grey.100',
                 },
@@ -211,10 +211,10 @@ const Layout = (props: PropsWithChildren): ReactElement => {
               position: 'fixed',
               bottom: '66px',
               right: `calc(${currentChatWidth}px + 340px + 16px)`,
-              transition: (theme) =>
-                theme.transitions.create('right', {
-                  easing: theme.transitions.easing.sharp,
-                  duration: theme.transitions.duration.enteringScreen,
+              transition: (sxTheme) =>
+                sxTheme.transitions.create('right', {
+                  easing: sxTheme.transitions.easing.sharp,
+                  duration: sxTheme.transitions.duration.enteringScreen,
                 }),
               zIndex: 1301,
             }}

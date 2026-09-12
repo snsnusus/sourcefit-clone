@@ -1,11 +1,11 @@
+import { type FormValues } from '..';
+import { type MuiTelInputInfo } from 'mui-tel-input';
 import { useState, type ReactElement } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { Box, Button, Chip, Grid, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DataDisplayRow from '~/components/ui/data-display-row';
 import { PhoneNumberInput } from '~/components/form/base/phone-number-input';
-import { FormValues } from '..';
-import { MuiTelInputInfo } from 'mui-tel-input';
 import { formatPhoneNumber } from '~/utils/phone-number.utils';
 import { z } from 'zod';
 import { isValidPhoneNumber } from 'libphonenumber-js';
@@ -62,7 +62,7 @@ export const PhoneNumber = (): ReactElement => {
     return '';
   };
 
-  const handleChange = (raw: string, info: MuiTelInputInfo) => {
+  const handleChange = (raw: string, info: MuiTelInputInfo): void => {
     const nextValue = {
       countryCode: info.countryCode ?? '',
       dialCode: info.countryCallingCode ?? '',
@@ -78,12 +78,12 @@ export const PhoneNumber = (): ReactElement => {
     if (errorMessage) setErrorMessage('');
   };
 
-  const handleClear = () => {
+  const handleClear = (): void => {
     setFormValues(initialFormValues);
     setErrorMessage('');
   };
 
-  const handleAddPhoneNumber = () => {
+  const handleAddPhoneNumber = (): void => {
     const error = validatePhone(formValues.international);
     if (error) {
       setErrorMessage(error);

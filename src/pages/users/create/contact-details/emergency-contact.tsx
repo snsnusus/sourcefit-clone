@@ -59,7 +59,7 @@ export const EmergencyContact = (): ReactElement => {
 
   const handleToggleSameAddress = (
     event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  ): void => {
     const checked = event.target.checked;
     setUseSameAddress(checked);
 
@@ -68,7 +68,7 @@ export const EmergencyContact = (): ReactElement => {
     }
   };
 
-  const handleSelectExistingAddress = (address: AddressFormValues) => {
+  const handleSelectExistingAddress = (address: AddressFormValues): void => {
     setValue('emergencyContact.address', address);
     setIsAddressModalOpen(false);
   };

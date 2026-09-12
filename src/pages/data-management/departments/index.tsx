@@ -24,9 +24,9 @@ const Departments = (): ReactElement => {
     useState<Department | null>(null);
   const [isOpenPreviewDialog, setIsOpenPreviewDialog] = useState(false);
 
-  const { data: departments } = useGetAllDepartments();
+  const { data: departments = [] } = useGetAllDepartments();
 
-  const handleCardClick = (selectedDept: Department) => {
+  const handleCardClick = (selectedDept: Department): void => {
     console.log(`Open modal details for: ${selectedDept}`);
     setSelectedDepartment(selectedDept);
     setIsOpenPreviewDialog(true);
@@ -55,7 +55,7 @@ const Departments = (): ReactElement => {
         </Box>
       </Stack>
       <Grid container spacing={2}>
-        {(departments ?? []).map((department) => (
+        {((departments as Department[]) ?? []).map((department) => (
           <Grid key={department.name} size={{ xs: 12, md: 4 }}>
             <InteractiveCard
               elevation={2}

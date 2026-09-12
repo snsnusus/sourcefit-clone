@@ -32,7 +32,7 @@ const AddEmailDrawer = ({
 
   const toggleDrawer = (open: boolean) => () => setIsOpen(open);
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     onSave({
       email,
       tag,
@@ -45,6 +45,7 @@ const AddEmailDrawer = ({
     setTag('');
     setIsPrimary(false);
   };
+
   return (
     <>
       <Button

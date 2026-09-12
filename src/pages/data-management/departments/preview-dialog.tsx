@@ -40,7 +40,7 @@ const PreviewDialog = ({
 }: PreviewDialogProps): ReactElement => {
   const navigate = useNavigate();
 
-  const handleRedirect = () => {
+  const handleRedirect = (): void => {
     if (selectedDepartment?.name) {
       const { id, name } = selectedDepartment;
 

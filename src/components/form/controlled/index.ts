@@ -1,3 +1,3 @@
-export * from './textfield.tsx';
-export * from './location-autocomplete.tsx';
-export * from './phone-number-input..tsx';
+export * from './textfield';
+export * from './location-autocomplete';
+export * from './phone-number-input';

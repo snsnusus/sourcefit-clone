@@ -1,7 +1,7 @@
+import type { RawPosition } from '~/models/position.models';
 import type { User, UserModel, UserOption } from '~/models/user.models';
 import type { DepartmentModel } from '~/models/department.models';
 import { mockClient } from '../api/client';
-import { Position } from '~/models/position.models';
 
 export const userService = {
   getUsersWithFullDetails: async (): Promise<User[]> => {
@@ -49,7 +49,7 @@ export const userService = {
   getUserOptions: async (): Promise<UserOption[]> => {
     const [usersResponse, positionsResponse] = await Promise.all([
       mockClient.get<UserModel[]>('/users'),
-      mockClient.get<Position[]>('/positions'),
+      mockClient.get<RawPosition[]>('/positions'),
     ]);
 
     const users = usersResponse.data ?? [];

@@ -5,7 +5,8 @@ import {
   useMutation,
   useQuery,
   useQueryClient,
-  UseQueryResult,
+  type UseMutationResult,
+  type UseQueryResult,
 } from '@tanstack/react-query';
 
 interface UpdateUserDepartmentParams {
@@ -17,21 +18,24 @@ const userKeys = {
   all: ['users'] as const,
 };
 
-export const useGetUsersWithFullDetails = (): UseQueryResult<User[], Error> => {
-  return useQuery({
+export const useGetUsersWithFullDetails = (): UseQueryResult<User[], Error> =>
+  useQuery({
     queryKey: [userKeys.all],
     queryFn: () => userService.getUsersWithFullDetails(),
   });
-};
 
-export const useGetUserOptions = (): UseQueryResult<UserOption[], Error> => {
-  return useQuery({
+export const useGetUserOptions = (): UseQueryResult<UserOption[], Error> =>
+  useQuery({
     queryKey: [userKeys.all, 'options'],
     queryFn: () => userService.getUserOptions(),
   });
-};
 
-export const useUpdateUserDepartment = () => {
+export const useUpdateUserDepartment = (): UseMutationResult<
+  any,
+  unknown,
+  UpdateUserDepartmentParams,
+  unknown
+> => {
   const queryClient = useQueryClient();
 
   return useMutation({

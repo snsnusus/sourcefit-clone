@@ -32,7 +32,7 @@ const IsolatedInput = ({
   label: string;
   value: string;
   onChange: (v: string) => void;
-}) => {
+}): ReactElement => {
   const [localValue, setLocalValue] = useState(value);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const AddressForm = ({
 }: {
   isSubmitted: boolean;
   onSubmit: (payload: AddressPayload) => void;
-}) => {
+}): ReactElement => {
   const [addressLine1, setAddressLine1] = useState('');
   const [addressLine2, setAddressLine2] = useState('');
   const [selectedProvince, setSelectedProvince] = useState<Region | null>(null);
@@ -101,7 +101,21 @@ const AddressForm = ({
         formattedAddress,
       });
     }
-  }, [isSubmitted]);
+  }, [
+    addressLine1,
+    addressLine2,
+    isPrimary,
+    isSubmitted,
+    onSubmit,
+    selectedBarangay?.id,
+    selectedBarangay?.name,
+    selectedCity?.id,
+    selectedCity?.name,
+    selectedProvince?.id,
+    selectedProvince?.name,
+    tag,
+    zipcode,
+  ]);
 
   return (
     <>
@@ -238,11 +252,10 @@ export const AddAddressDrawer = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const toggleDrawer = (open: boolean) => () => setIsOpen(open);
-  const toggleSubmit = (isSubmitted: boolean) => () =>
-    setIsSubmitted(isSubmitted);
+  const toggleDrawer = (open: boolean): void => setIsOpen(open);
+  const toggleSubmit = (flag: boolean): void => setIsSubmitted(flag);
 
-  const handleSubmit = (payload: AddressPayload) => {
+  const handleSubmit = (payload: AddressPayload): void => {
     onSave(payload);
     toggleSubmit(false);
     toggleDrawer(false);
@@ -254,7 +267,7 @@ export const AddAddressDrawer = ({
         variant="contained"
         color="primary"
         size="small"
-        onClick={toggleDrawer(true)}
+        onClick={() => toggleDrawer(true)}
         startIcon={<AddIcon />}
       >
         Add Address
@@ -262,7 +275,7 @@ export const AddAddressDrawer = ({
       <Drawer
         anchor="right"
         open={isOpen}
-        onClose={toggleDrawer(false)}
+        onClose={() => toggleDrawer(false)}
         title="Add Address"
         action={
           <>
@@ -270,7 +283,7 @@ export const AddAddressDrawer = ({
               variant="text"
               color="inherit"
               size="small"
-              onClick={toggleDrawer(false)}
+              onClick={() => toggleDrawer(false)}
             >
               Cancel
             </Button>
@@ -278,7 +291,7 @@ export const AddAddressDrawer = ({
               variant="contained"
               color="primary"
               size="small"
-              onClick={toggleSubmit(true)}
+              onClick={() => toggleSubmit(true)}
             >
               Save
             </Button>

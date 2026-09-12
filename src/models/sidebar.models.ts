@@ -1,5 +1,5 @@
-import { SvgIconProps } from '@mui/material';
-import { ElementType } from 'react';
+import type { SvgIconProps } from '@mui/material';
+import type { ElementType } from 'react';
 
 export interface MenuItems {
   label: string;

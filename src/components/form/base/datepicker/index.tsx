@@ -1,5 +1,5 @@
 import type {
-  ReactDatePickerProps,
+  DatePickerProps as ReactDatePickerProps,
   ReactDatePickerCustomHeaderProps,
 } from 'react-datepicker';
 
@@ -64,7 +64,6 @@ const CustomDatePicker = (props: DatePickerProps): ReactElement => {
     label,
     showPopperArrow = false,
     dateFormat = 'MM/dd/yyyy',
-    defaultValue = type === 'range' ? [] : null,
     onChange,
     ...rest
   } = props;

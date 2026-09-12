@@ -108,7 +108,15 @@ export const departmentService = {
     );
 
     // 4. Helper to format user objects consistently without repeating code
-    const formatUser = (user?: UserModel) => {
+    const formatUser = (
+      user?: UserModel
+    ): {
+      id: string;
+      formattedName: string;
+      position: string;
+      avatarUrl: string;
+      departmentId: string;
+    } | null => {
       if (!user) return null;
 
       const positionName =
@@ -156,7 +164,9 @@ export const departmentService = {
           title: scope.title,
           description: scope.description,
         })),
-        teamMembers: associatedMembers.map((member) => formatUser(member)!),
+        teamMembers: associatedMembers
+          .map((member) => formatUser(member))
+          .filter((member) => member !== null),
       };
     });
   },

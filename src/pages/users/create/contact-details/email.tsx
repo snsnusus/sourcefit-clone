@@ -11,7 +11,7 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import DataDisplayRow from '~/components/ui/data-display-row';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { FormValues } from '..';
+import type { FormValues } from '..';
 import { z } from 'zod';
 
 const emailSchema = z.email('Please enter a valid email address.');
@@ -37,17 +37,17 @@ export const Email = (): ReactElement => {
     return result.success ? '' : result.error.issues[0].message;
   };
 
-  const reset = () => {
+  const reset = (): void => {
     setInputValue('');
     setErrorMessage('');
   };
 
-  const handleBlur = () => {
+  const handleBlur = (): void => {
     if (!inputValue) return setErrorMessage('');
     setErrorMessage(validateEmail(inputValue));
   };
 
-  const handleAdd = () => {
+  const handleAdd = (): void => {
     const trimmed = inputValue.trim();
     const error = validateEmail(trimmed);
     if (error) {

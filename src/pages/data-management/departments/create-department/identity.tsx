@@ -19,6 +19,60 @@ const FILE_CONFIG = {
   acceptedFormats: ['image/jpeg', 'image/png', 'image/tiff'],
 };
 
+const CoverImage = (): ReactElement => {
+  const { watch, setValue } = useFormContext();
+  const [invalidFile, setInvalidFile] = useState<File | null>(null);
+
+  const coverImage = watch('coverImage');
+
+  const handleSelectFile = (files: File[]): void => {
+    if (files && files.length > 0) {
+      const fileToUpload = files[0];
+      const { isValid } = validateFile(fileToUpload, FILE_CONFIG);
+
+      if (isValid) {
+        setInvalidFile(null);
+        setValue('coverImage', fileToUpload);
+      } else {
+        setInvalidFile(fileToUpload);
+        setValue('coverImage', null);
+      }
+    }
+  };
+
+  const handleRemoveFile = (): void => {
+    setInvalidFile(null);
+    setValue('coverImage', null);
+  };
+
+  return (
+    <>
+      <Grid size={{ xs: 12, md: coverImage ? 6 : 12 }}>
+        <DataDisplayRow label="Cover Image">
+          <FileUploadZone
+            onFilesSelected={handleSelectFile}
+            multiple={false}
+            criteria={
+              <FileCriteria
+                file={coverImage || invalidFile}
+                config={FILE_CONFIG}
+              />
+            }
+          />
+        </DataDisplayRow>
+      </Grid>
+      {coverImage && (
+        <Grid size={{ xs: 12, md: 6 }}>
+          <CoverImagePreview
+            selectedFile={coverImage}
+            removeFile={handleRemoveFile}
+          />
+        </Grid>
+      )}
+    </>
+  );
+};
+
 export const Identity = (): ReactElement => {
   const { data: offices } = useGetOffices();
 
@@ -107,59 +161,5 @@ export const Identity = (): ReactElement => {
         </Grid>
       </CardContent>
     </Card>
-  );
-};
-
-const CoverImage = (): ReactElement => {
-  const { watch, setValue } = useFormContext();
-  const [invalidFile, setInvalidFile] = useState<File | null>(null);
-
-  const coverImage = watch('coverImage');
-
-  const handleSelectFile = (files: File[]) => {
-    if (files && files.length > 0) {
-      const fileToUpload = files[0];
-      const { isValid } = validateFile(fileToUpload, FILE_CONFIG);
-
-      if (isValid) {
-        setInvalidFile(null);
-        setValue('coverImage', fileToUpload);
-      } else {
-        setInvalidFile(fileToUpload);
-        setValue('coverImage', null);
-      }
-    }
-  };
-
-  const handleRemoveFile = () => {
-    setInvalidFile(null);
-    setValue('coverImage', null);
-  };
-
-  return (
-    <>
-      <Grid size={{ xs: 12, md: coverImage ? 6 : 12 }}>
-        <DataDisplayRow label="Cover Image">
-          <FileUploadZone
-            onFilesSelected={handleSelectFile}
-            multiple={false}
-            criteria={
-              <FileCriteria
-                file={coverImage || invalidFile}
-                config={FILE_CONFIG}
-              />
-            }
-          />
-        </DataDisplayRow>
-      </Grid>
-      {coverImage && (
-        <Grid size={{ xs: 12, md: 6 }}>
-          <CoverImagePreview
-            selectedFile={coverImage}
-            removeFile={handleRemoveFile}
-          />
-        </Grid>
-      )}
-    </>
   );
 };
