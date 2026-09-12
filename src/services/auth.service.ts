@@ -1,21 +1,20 @@
-import type { UserModel } from '~/models/user.models';
-import { mockClient } from '../api/client';
+import { apiClient } from '~/api/client';
+
+interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+}
 
 export const authService = {
-  verifyCredentials: async (
-    identity: string,
-    password: string
-  ): Promise<UserModel | null> => {
-    const res = await mockClient.get<UserModel[]>('/users', {
-      params: { password: password },
+  login: async (username: string, password: string): Promise<AuthResponse> => {
+    const { data } = await apiClient.post<AuthResponse>('/Auth/login', {
+      username,
+      password,
     });
 
-    const exactMatch = res.data.find(
-      (user) =>
-        user.username.toLowerCase() === identity.toLowerCase() &&
-        user.password === password
-    );
-
-    return exactMatch || null;
+    return data;
+  },
+  logout: async (refreshToken: string): Promise<void> => {
+    await apiClient.post('/Auth/logout', { refreshToken });
   },
 };

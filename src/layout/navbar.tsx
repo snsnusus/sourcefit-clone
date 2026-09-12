@@ -225,7 +225,7 @@ const Navbar = (): ReactElement => {
                     <Divider />
                   </>
                 )}
-                <MenuItem onClick={() => logout()}>
+                <MenuItem onClick={async () => logout()}>
                   <ListItemIcon>
                     <LogoutIcon fontSize="small" />
                   </ListItemIcon>

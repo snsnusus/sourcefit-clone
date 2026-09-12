@@ -1,4 +1,4 @@
-import type { UserModel } from '~/models/user.models';
+import { jwtDecode } from 'jwt-decode';
 import {
   createContext,
   type ReactElement,
@@ -8,55 +8,90 @@ import {
 } from 'react';
 import { authService } from '~/services/auth.service';
 
+interface AuthUser {
+  id: string;
+  name: string;
+  role: string;
+  departmentId?: string;
+}
+
+interface DecodedToken {
+  sub: string;
+  name: string;
+  role: string;
+  departmentId?: string;
+  exp: number;
+}
+
 interface AuthContextType {
-  user: UserModel | null;
+  user: AuthUser | null;
   isAuthenticated: boolean;
-  login: (identity: string, password: string) => Promise<boolean>;
-  logout: () => void;
+  login: (username: string, password: string) => Promise<boolean>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const MockAuthProvider = ({
-  children,
-}: PropsWithChildren): ReactElement => {
-  const [user, setUser] = useState<UserModel | null>(() => {
-    const savedUser = localStorage.getItem('auth_user');
-    return savedUser ? JSON.parse(savedUser) : null;
+const decodeUser = (accessToken: string): AuthUser => {
+  const decoded = jwtDecode<DecodedToken>(accessToken);
+
+  return {
+    id: decoded.sub,
+    name: decoded.name,
+    role: decoded.role,
+    departmentId: decoded.departmentId,
+  };
+};
+
+export const AuthProvider = ({ children }: PropsWithChildren): ReactElement => {
+  const [user, setUser] = useState<AuthUser | null>(() => {
+    const savedAccessToken = localStorage.getItem('access_token');
+    if (!savedAccessToken) return null;
+
+    try {
+      return decodeUser(savedAccessToken);
+    } catch {
+      return null;
+    }
   });
 
   const login = async (
-    identity: string,
+    username: string,
     password: string
   ): Promise<boolean> => {
     try {
-      const matchedUser = await authService.verifyCredentials(
-        identity,
+      const { accessToken, refreshToken } = await authService.login(
+        username,
         password
       );
 
-      if (matchedUser) {
-        localStorage.setItem('auth_user', JSON.stringify(matchedUser));
-        setUser(matchedUser);
+      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem('refresh_token', refreshToken);
+      setUser(decodeUser(accessToken));
 
-        return true;
-      }
-
-      localStorage.removeItem('auth_user');
-      setUser(null);
-
-      return false;
+      return true;
     } catch (error) {
-      console.error('Authentication connection error inside Context:', error);
+      console.error('Login failed:', error);
       setUser(null);
 
       return false;
     }
   };
 
-  const logout = (): void => {
-    localStorage.removeItem('auth_user');
-    setUser(null); // Instantly boots unauthorized users out!
+  const logout = async (): Promise<void> => {
+    const refreshToken = localStorage.getItem('refresh_token');
+
+    if (refreshToken) {
+      try {
+        await authService.logout(refreshToken);
+      } catch (error) {
+        console.error('Logout request failed:', error);
+      }
+    }
+
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    setUser(null);
   };
 
   return (
@@ -70,7 +105,6 @@ export const MockAuthProvider = ({
 
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  if (!context)
-    throw new Error('useAuth must be used within a MockAuthProvider');
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 };

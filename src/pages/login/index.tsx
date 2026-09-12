@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '~/contexts/auth.context';
 
 import {
+  Alert,
   Box,
   Button,
   Checkbox,
@@ -30,6 +31,7 @@ const Login = (): ReactElement => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const destination = location.state?.from?.pathname || '/';
 
@@ -38,11 +40,7 @@ const Login = (): ReactElement => {
 
     if (!username.trim() || !password.trim()) return;
 
-    console.log(
-      username.trim(),
-      password.trim(),
-      'username.trim(), password.trim()'
-    );
+    setErrorMessage('');
 
     try {
       const isSuccess = await login(username.trim(), password.trim());
@@ -50,10 +48,11 @@ const Login = (): ReactElement => {
       if (isSuccess) {
         navigate(destination, { replace: true });
       } else {
-        console.error('Login failed: Invalid credentials matches.');
+        setErrorMessage('Invalid username or password.');
       }
     } catch (error) {
-      console.error('Form handling connection submission exception:', error);
+      console.error('Login request failed:', error);
+      setErrorMessage('Something went wrong. Please try again.');
     }
   };
 
@@ -125,6 +124,11 @@ const Login = (): ReactElement => {
           </Box>
 
           <Box component="form" onSubmit={handleSubmit} noValidate>
+            {errorMessage && (
+              <Alert severity="error" sx={{ mb: 2 }}>
+                {errorMessage}
+              </Alert>
+            )}
             <TextField
               margin="normal"
               required
@@ -136,7 +140,10 @@ const Login = (): ReactElement => {
               autoFocus
               variant="outlined"
               value={username}
-              onChange={(e): void => setUsername(e.target.value)}
+              onChange={(e) => {
+                setUsername(e.target.value);
+                if (errorMessage) setErrorMessage('');
+              }}
               placeholder="e.g. CielDev"
               sx={{ '& .MuiOutlinedInput-root': { borderRadius: 2 } }}
             />

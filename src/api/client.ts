@@ -10,3 +10,7 @@ export const mockClient = createRequest({
     'Content-Type': 'application/json',
   },
 });
+
+export const apiClient = createRequest({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+});

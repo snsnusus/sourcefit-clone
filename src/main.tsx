@@ -9,7 +9,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ModalProvider } from 'mui-modal-provider';
 import { SnackbarProvider, type SnackbarOrigin } from 'notistack';
 import { WebSocketProvider } from './contexts/websocket.context';
-import { MockAuthProvider } from './contexts/auth.context';
+import { AuthProvider } from './contexts/auth.context';
 import AppRouter from './routes';
 
 import { theme } from './theme';
@@ -37,9 +37,9 @@ createRoot(container).render(
         <SnackbarProvider anchorOrigin={anchorOrigin} maxSnack={3}>
           <ModalProvider>
             <WebSocketProvider>
-              <MockAuthProvider>
+              <AuthProvider>
                 <AppRouter />
-              </MockAuthProvider>
+              </AuthProvider>
             </WebSocketProvider>
           </ModalProvider>
         </SnackbarProvider>
